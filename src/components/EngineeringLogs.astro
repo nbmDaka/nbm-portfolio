@@ -1,14 +1,15 @@
 ---
 const logs = [
-  { date: '2025-08-14', time: '03:47:22', event: 'Resolved production infrastructure issue', scope: 'linux / nginx / security', status: 'FIXED' },
-  { date: '2025-05-20', time: '16:08:04', event: 'Implemented RAG retrieval pipeline', scope: 'embeddings / vector search', status: 'DEPLOYED' },
-  { date: '2024-04-11', time: '09:32:51', event: 'Scaled assessment services for peak traffic', scope: 'spring / postgres / cache', status: 'STABLE' },
-  { date: '2024-02-03', time: '12:15:09', event: 'Instrumented service health and failure paths', scope: 'metrics / logs / alerts', status: 'OBSERVED' },
+  { date: '2025-08-14', time: '03:47:22', event: 'Root-caused expired TLS certificate on nginx ingress; restored API traffic in ~40 min; added cert-expiry alerting', scope: 'linux / nginx / certbot', status: 'FIXED' },
+  { date: '2025-05-20', time: '16:08:04', event: 'Deployed RAG retrieval pipeline; NDCG@10 +0.18 over keyword baseline on a 400-query eval set', scope: 'embeddings / vector db / reranker', status: 'DEPLOYED' },
+  { date: '2024-11-06', time: '14:22:38', event: 'Moved assessment event export to Kafka consumers; request path no longer blocks on analytics', scope: 'kafka / consumers / backfill', status: 'DEPLOYED' },
+  { date: '2024-04-11', time: '09:32:51', event: 'Load-tested at 2× peak before exam window; resized PG pools; held 45K sessions at p99 240ms', scope: 'k6 / spring / postgres', status: 'STABLE' },
+  { date: '2024-02-03', time: '12:15:09', event: 'Instrumented services with Prometheus and Grafana; alerts on error rate, pool saturation, p99', scope: 'prometheus / grafana / alerts', status: 'OBSERVED' },
 ];
 ---
 
 <section class="section-shell logs" id="logs" aria-labelledby="logs-title">
-  <div class="logs-head"><div><p class="eyebrow">05 / Engineering logs</p><h2 class="section-title" id="logs-title">Operational record.</h2></div><div class="log-status"><i></i><span>4 ENTRIES INDEXED</span></div></div>
+  <div class="logs-head"><div><p class="eyebrow">05 / Engineering logs</p><h2 class="section-title" id="logs-title">Operational record.</h2></div><div class="log-status"><i></i><span>5 ENTRIES INDEXED</span></div></div>
   <div class="log-window">
     <header><span>~/engineering/logs</span><code>tail -f production.log</code></header>
     <div class="log-rows">

@@ -1,17 +1,17 @@
 ---
-import SystemNetwork from './react/SystemNetwork';
+import LazyNetwork from './react/LazyNetwork';
 ---
 
 <section class="section-shell lab" id="lab" aria-labelledby="lab-title">
   <div class="lab-copy">
     <p class="eyebrow">04 / Architecture lab</p>
     <h2 class="section-title" id="lab-title">Inspect the system.</h2>
-    <p class="section-copy">A service map is only useful when it explains behavior. Rotate the topology and select a node to inspect its responsibility.</p>
+    <p class="section-copy">A service map is only useful when it explains behavior. Rotate the topology and select a node — by pointer or keyboard — to inspect its responsibility.</p>
     <div class="lab-legend">
       <span><i class="green"></i>CORE RUNTIME</span><span><i class="indigo"></i>AI LAYER</span><span><i></i>INFRASTRUCTURE</span>
     </div>
   </div>
-  <div class="lab-stage"><SystemNetwork client:only="react" mode="lab" /></div>
+  <div class="lab-stage"><LazyNetwork client:only="react" mode="lab" /></div>
 </section>
 
 <style>

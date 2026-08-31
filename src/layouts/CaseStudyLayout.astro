@@ -11,6 +11,7 @@ interface Props {
     period: string;
     metric: string;
     metricLabel: string;
+    scope: string;
     stack: string[];
     flow: string[];
     accent?: 'green' | 'indigo' | 'white';
@@ -28,7 +29,7 @@ const { frontmatter } = Astro.props;
       <p>{frontmatter.description}</p>
       <div class="case-stats">
         <div><span>PRIMARY OUTCOME</span><strong>{frontmatter.metric}</strong><p>{frontmatter.metricLabel}</p></div>
-        <div><span>ROLE</span><strong class="small">{frontmatter.role}</strong><p>architecture / implementation / operations</p></div>
+        <div><span>ROLE</span><strong class="small">{frontmatter.role}</strong><p>{frontmatter.scope}</p></div>
         <div><span>TECHNOLOGY</span><ul>{frontmatter.stack.map((item) => <li>{item}</li>)}</ul></div>
       </div>
     </header>

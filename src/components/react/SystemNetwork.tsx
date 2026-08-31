@@ -14,12 +14,12 @@ type NodeData = {
 
 const nodes: NodeData[] = [
   { id: 'edge', label: 'EDGE', type: 'Gateway', description: 'Rate limiting, auth, request routing', position: [-3.4, 1.3, 0] },
-  { id: 'api', label: 'API', type: 'Go Service', description: 'Low-latency orchestration layer', position: [-1.2, .35, .35], accent: 'green' },
-  { id: 'events', label: 'KAFKA', type: 'Event Bus', description: 'Durable asynchronous event backbone', position: [.7, 1.6, -.25] },
-  { id: 'workers', label: 'WORKERS', type: 'Java Services', description: 'Horizontally scalable domain workers', position: [1.25, -.35, .2] },
+  { id: 'api', label: 'API', type: 'Go Service', description: 'Go serving layer — retrieval and orchestration on a p95 budget', position: [-1.2, .35, .35], accent: 'green' },
+  { id: 'events', label: 'KAFKA', type: 'Event Bus', description: 'Assessment events, analytics, and async exports off the request path', position: [.7, 1.6, -.25] },
+  { id: 'workers', label: 'WORKERS', type: 'Spring Boot Services', description: 'Stateless domain services — capacity scales by instance count', position: [1.25, -.35, .2] },
   { id: 'data', label: 'DATA', type: 'PostgreSQL', description: 'Transactional source of truth', position: [3.35, .95, -.15] },
   { id: 'vector', label: 'VECTOR', type: 'Vector Store', description: 'Semantic retrieval and embeddings', position: [3.1, -1.15, .3], accent: 'indigo' },
-  { id: 'ai', label: 'AI', type: 'RAG Pipeline', description: 'Context assembly and model inference', position: [.45, -1.75, -.2], accent: 'indigo' },
+  { id: 'ai', label: 'AI', type: 'RAG Pipeline', description: 'Context assembly, re-ranking, and model inference', position: [.45, -1.75, -.2], accent: 'indigo' },
 ];
 
 const links = [[0,1],[1,2],[1,3],[2,3],[3,4],[3,5],[5,6],[2,6]] as const;
@@ -75,6 +75,13 @@ export default function SystemNetwork({ mode = 'hero' }: { mode?: 'hero' | 'lab'
         <span><i /> LIVE TOPOLOGY</span><span>07 NODES / 08 LINKS</span>
       </div>
       {interactive && (
+        <div className="node-selector" role="group" aria-label="Inspect a node">
+          {nodes.map((node) => (
+            <button key={node.id} type="button" className={selected === node.id ? 'active' : ''} onClick={() => setSelected(node.id)} aria-pressed={selected === node.id}>{node.label}</button>
+          ))}
+        </div>
+      )}
+      {interactive && (
         <aside className="inspector" aria-live="polite">
           <div><span className="index">NODE/{String(nodes.indexOf(current) + 1).padStart(2, '0')}</span><span className="healthy">HEALTHY</span></div>
           <h3>{current.label}</h3>
@@ -83,7 +90,7 @@ export default function SystemNetwork({ mode = 'hero' }: { mode?: 'hero' | 'lab'
         </aside>
       )}
       <style>{`
-        .network{position:relative;min-height:32rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:.55rem;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.035),transparent 55%),#070708}.network.hero{min-height:34rem;border:0;border-radius:0;background:transparent}.network canvas{position:absolute!important;inset:0}.network-meta{position:absolute;inset:auto 1rem 1rem;display:flex;justify-content:space-between;color:#52525b;font:500 .55rem/1 'JetBrains Mono',monospace;letter-spacing:.08em}.network-meta span:first-child{display:flex;align-items:center;gap:.5rem;color:#71717a}.network-meta i{display:block;width:.35rem;height:.35rem;border-radius:50%;background:#00ff88;box-shadow:0 0 10px rgba(0,255,136,.6)}.node-tag{display:flex;align-items:center;gap:.35rem;white-space:nowrap;color:#71717a;font:500 9px/1 'JetBrains Mono',monospace;letter-spacing:.08em;transition:color .2s}.node-tag span{color:#3f3f46}.node-tag.active{color:#fff}.inspector{position:absolute;left:1rem;bottom:3rem;width:min(18rem,calc(100% - 2rem));border:1px solid rgba(255,255,255,.12);border-radius:.35rem;background:rgba(8,8,9,.84);padding:1rem;backdrop-filter:blur(12px)}.inspector>div{display:flex;justify-content:space-between}.index,.healthy,.inspector code{font:500 .55rem/1 'JetBrains Mono',monospace;letter-spacing:.09em}.index{color:#52525b}.healthy{color:#00ff88}.inspector h3{margin:1rem 0 .45rem;font:520 1.35rem/1 'Geist Variable',sans-serif;letter-spacing:-.03em}.inspector code{color:#818cf8}.inspector p{margin:.8rem 0 0;color:#a1a1aa;font-size:.75rem;line-height:1.55}@media(max-width:720px){.network,.network.hero{min-height:27rem}.network-meta{font-size:.48rem}}
+        .network{position:relative;min-height:32rem;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:.55rem;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.035),transparent 55%),#070708}.network.hero{min-height:34rem;border:0;border-radius:0;background:transparent}.network canvas{position:absolute!important;inset:0}.network-meta{position:absolute;inset:auto 1rem 1rem;display:flex;justify-content:space-between;color:#52525b;font:500 .55rem/1 'JetBrains Mono',monospace;letter-spacing:.08em}.network-meta span:first-child{display:flex;align-items:center;gap:.5rem;color:#71717a}.network-meta i{display:block;width:.35rem;height:.35rem;border-radius:50%;background:#00ff88;box-shadow:0 0 10px rgba(0,255,136,.6)}.node-tag{display:flex;align-items:center;gap:.35rem;white-space:nowrap;color:#71717a;font:500 9px/1 'JetBrains Mono',monospace;letter-spacing:.08em;transition:color .2s}.node-tag span{color:#3f3f46}.node-tag.active{color:#fff}.inspector{position:absolute;left:1rem;bottom:3rem;width:min(18rem,calc(100% - 2rem));border:1px solid rgba(255,255,255,.12);border-radius:.35rem;background:rgba(8,8,9,.84);padding:1rem;backdrop-filter:blur(12px)}.inspector>div{display:flex;justify-content:space-between}.index,.healthy,.inspector code{font:500 .55rem/1 'JetBrains Mono',monospace;letter-spacing:.09em}.index{color:#52525b}.healthy{color:#00ff88}.inspector h3{margin:1rem 0 .45rem;font:520 1.35rem/1 'Geist Variable',sans-serif;letter-spacing:-.03em}.inspector code{color:#818cf8}.inspector p{margin:.8rem 0 0;color:#a1a1aa;font-size:.75rem;line-height:1.55}.node-selector{position:absolute;top:1rem;left:50%;transform:translateX(-50%);display:flex;flex-wrap:wrap;justify-content:center;gap:.4rem;width:max-content;max-width:calc(100% - 2rem)}.node-selector button{border:1px solid rgba(255,255,255,.12);border-radius:99px;background:rgba(8,8,9,.62);padding:.42rem .62rem;color:#71717a;font:500 .52rem/1 'JetBrains Mono',monospace;letter-spacing:.06em;cursor:pointer;transition:border-color .15s,color .15s}.node-selector button:hover{border-color:rgba(255,255,255,.32);color:#fff}.node-selector button.active{border-color:rgba(0,255,136,.45);color:#00ff88}@media(max-width:720px){.network,.network.hero{min-height:27rem}.network-meta{font-size:.48rem}}
       `}</style>
     </div>
   );

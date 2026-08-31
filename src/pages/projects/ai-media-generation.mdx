@@ -5,8 +5,9 @@ description: An asynchronous generation engine that turns slow, unreliable model
 system: SYS_003
 period: 2025
 role: Platform Engineer
+scope: job engine / provider integration / cost controls
 metric: ASYNC
-metricLabel: queue-based generation engine with durable job state
+metricLabel: zero lost jobs · durable state in PostgreSQL
 stack:
   - Next.js
   - AI APIs
@@ -60,6 +61,7 @@ Every job carries a real cost. Concurrency limits, per-user quotas, and attempt 
 ## Results
 
 - Generation throughput decoupled from request latency via the **async job engine**
-- **Zero lost jobs** — durable state in PostgreSQL survives worker failure
+- **Zero lost jobs** — durable state survives worker failure; crashed workers re-queue automatically
+- **p95 queue wait under 5s** at normal load; bursts absorbed by scaling workers
 - Provider failures isolated and absorbed without user-facing outages
-- Cost per generation made observable and controllable at the queue layer
+- Cost per generation observable and capped at the queue layer

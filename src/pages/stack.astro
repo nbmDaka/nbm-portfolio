@@ -6,19 +6,19 @@ const categories = [
     id: 'MOD_01',
     name: 'Backend Runtime',
     note: 'Services that hold under load.',
-    state: 'CORE',
     tech: [
-      { name: 'Go', context: 'High-throughput services and low-latency APIs' },
+      { name: 'Go', context: 'Low-latency retrieval and API serving' },
       { name: 'Java', context: 'Enterprise systems at national scale' },
       { name: 'Spring Boot', context: 'Production microservices, shipped fast' },
       { name: 'NestJS', context: 'Structured Node services with typed boundaries' },
+      { name: 'Kafka', context: 'Event backbone for analytics and async workflows' },
+      { name: 'gRPC', context: 'Typed internal service contracts, low overhead' },
     ],
   },
   {
     id: 'MOD_02',
     name: 'Infrastructure',
     note: 'Boring where it should be, sharp where it matters.',
-    state: 'HARDENED',
     tech: [
       { name: 'Docker', context: 'Reproducible builds and deployments' },
       { name: 'Linux', context: 'Production servers, hardening, incident response' },
@@ -29,7 +29,6 @@ const categories = [
     id: 'MOD_03',
     name: 'Data Systems',
     note: 'The source of truth stays truthful.',
-    state: 'OPTIMIZED',
     tech: [
       { name: 'PostgreSQL', context: 'Primary store — query optimization, high-load paths' },
       { name: 'MySQL', context: 'Service-owned schemas and legacy integration' },
@@ -40,7 +39,6 @@ const categories = [
     id: 'MOD_04',
     name: 'AI Systems',
     note: 'Intelligence as infrastructure, not decoration.',
-    state: 'ONLINE',
     ai: true,
     tech: [
       { name: 'RAG', context: 'Retrieval pipelines with measurable relevance' },
@@ -75,7 +73,6 @@ const principles = [
                 <span>{category.id}</span>
                 <h2>{category.name}</h2>
               </div>
-              <code><i></i>{category.state}</code>
             </header>
             <p class="category-note">{category.note}</p>
             <ul>
@@ -115,10 +112,6 @@ const principles = [
   .category header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
   .category-id span { color: #52525b; font: 500 .56rem/1 'JetBrains Mono', monospace; letter-spacing: .1em; }
   .category-id h2 { margin: .8rem 0 0; font: 520 clamp(1.6rem, 2.6vw, 2.4rem)/1 'Geist Variable', sans-serif; letter-spacing: -.04em; }
-  .category header code { display: flex; align-items: center; gap: .45rem; border: 1px solid rgba(0,255,136,.16); border-radius: 99px; padding: .42rem .6rem; color: #00ff88; font: 500 .5rem/1 'JetBrains Mono', monospace; letter-spacing: .08em; }
-  .category header i { width: .3rem; height: .3rem; border-radius: 50%; background: #00ff88; }
-  .category.ai header code { border-color: rgba(99,102,241,.3); color: #818cf8; }
-  .category.ai header i { background: #6366f1; box-shadow: 0 0 10px rgba(99,102,241,.7); }
   .category-note { margin: 1rem 0 0; color: #71717a; font-size: .82rem; line-height: 1.6; }
   .category ul { display: flex; flex-direction: column; margin: 2.2rem 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
   .category li { display: grid; grid-template-columns: minmax(7rem, .42fr) 1fr; gap: 1rem; align-items: baseline; padding: .85rem 0; border-bottom: 1px solid var(--line); }

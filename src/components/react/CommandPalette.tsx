@@ -22,6 +22,7 @@ export default function CommandPalette() {
   const [query, setQuery] = useState('');
   const [active, setActive] = useState(0);
   const input = useRef<HTMLInputElement>(null);
+  const previouslyFocused = useRef<HTMLElement | null>(null);
 
   const results = useMemo(() => {
     const normalized = query.toLowerCase().trim();
@@ -47,8 +48,13 @@ export default function CommandPalette() {
   }, []);
 
   useEffect(() => {
-    if (open) window.setTimeout(() => input.current?.focus(), 30);
-    else setQuery('');
+    if (open) {
+      previouslyFocused.current = document.activeElement as HTMLElement | null;
+      window.setTimeout(() => input.current?.focus(), 30);
+    } else {
+      setQuery('');
+      previouslyFocused.current?.focus();
+    }
   }, [open]);
 
   useEffect(() => setActive(0), [query]);
