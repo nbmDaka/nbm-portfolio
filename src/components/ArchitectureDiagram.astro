@@ -1,0 +1,21 @@
+---
+interface Props { nodes: string[]; accent?: 'green' | 'indigo' | 'white'; }
+const { nodes, accent = 'green' } = Astro.props;
+---
+
+<div class:list={['diagram', accent]}>
+  <div class="diagram-grid" aria-hidden="true"></div>
+  <div class="flow">
+    {nodes.map((node, index) => (
+      <>
+        <div class="node"><span>{String(index + 1).padStart(2,'0')}</span><strong>{node}</strong><i></i></div>
+        {index < nodes.length - 1 && <div class="connector"><i></i><span>→</span></div>}
+      </>
+    ))}
+  </div>
+  <footer><span>REQUEST PATH</span><span>HEALTH / ALL NODES NOMINAL</span><span>LATENCY / OBSERVED</span></footer>
+</div>
+
+<style>
+  .diagram{position:relative;overflow:hidden;margin-top:2rem;border:1px solid var(--line);border-radius:.45rem;background:#070707;padding:clamp(3rem,7vw,7rem) clamp(1rem,4vw,4rem) 0}.diagram-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:40px 40px;mask-image:linear-gradient(to bottom,black,transparent 85%)}.flow{position:relative;display:flex;align-items:center;justify-content:center}.node{position:relative;display:flex;width:clamp(6rem,11vw,10rem);height:clamp(6rem,11vw,10rem);flex-direction:column;justify-content:center;align-items:center;border:1px solid #3f3f46;border-radius:50%;background:#090909}.node span{position:absolute;top:1rem;color:#52525b;font:400 .52rem/1 'JetBrains Mono',monospace}.node strong{padding:0 .5rem;font:500 clamp(.52rem,1vw,.68rem)/1.3 'JetBrains Mono',monospace;text-align:center;letter-spacing:.06em}.node i{position:absolute;bottom:1rem;width:.35rem;height:.35rem;border-radius:50%;background:#00ff88;box-shadow:0 0 12px rgba(0,255,136,.6)}.indigo .node i{background:#6366f1;box-shadow:0 0 12px rgba(99,102,241,.7)}.white .node i{background:#fff}.connector{display:flex;min-width:1.2rem;flex:1;align-items:center;color:#52525b}.connector i{height:1px;flex:1;background:#3f3f46}.connector span{font:400 .8rem/1 'JetBrains Mono',monospace}.diagram footer{position:relative;display:flex;justify-content:space-between;gap:1rem;margin-top:clamp(3rem,6vw,6rem);padding:1rem 0;color:#3f3f46;font:500 .52rem/1 'JetBrains Mono',monospace;letter-spacing:.07em;border-top:1px solid var(--line)}@media(max-width:650px){.diagram{padding-top:3rem}.flow{flex-direction:column}.connector{min-height:2rem;flex:0;flex-direction:column}.connector i{width:1px;height:auto;flex:1}.connector span{rotate:90deg}.node{width:7rem;height:7rem}.diagram footer{flex-direction:column}}
+</style>

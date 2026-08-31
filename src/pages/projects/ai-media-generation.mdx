@@ -1,0 +1,65 @@
+---
+layout: ../../layouts/CaseStudyLayout.astro
+title: AI Media Generation Platform
+description: An asynchronous generation engine that turns slow, unreliable model calls into a predictable, observable production workflow.
+system: SYS_003
+period: 2025
+role: Platform Engineer
+metric: ASYNC
+metricLabel: queue-based generation engine with durable job state
+stack:
+  - Next.js
+  - AI APIs
+  - PostgreSQL
+flow:
+  - NEXT.JS UI
+  - JOB QUEUE
+  - MODEL API
+  - STORAGE
+accent: white
+---
+
+## Problem
+
+AI media generation breaks the request-response model. A generation call can take tens of seconds to minutes, fails in ways ordinary APIs do not, and costs real money per attempt. Holding an HTTP connection open is not architecture — it is hoping.
+
+The platform needed to make an inherently slow, unreliable, expensive operation feel **predictable**: submit a request, track it honestly, deliver the result, and never lose a job the user paid for.
+
+## Architecture
+
+The **Next.js** frontend never talks to a model directly. Generation requests become **durable jobs** persisted in **PostgreSQL** with an explicit state machine: queued, running, succeeded, failed, retried. Workers pull jobs, call the AI model APIs, and write results to storage; the client follows progress through polling or completion callbacks.
+
+Because job state lives in the database rather than in process memory, any worker can die at any point and the system recovers by reading state — not by reconstructing it.
+
+## Engineering decisions
+
+### Job state machine as the core abstraction
+
+Every generation is a row with a state, an attempt count, and an idempotency key. Retries are safe, duplicate submissions collapse to one job, and the entire system's behavior is auditable from a single table.
+
+### Asynchronous by default
+
+Slow work never blocks the request path. The UI submits and returns immediately; progress is a read model over job state. This kept user-facing latency flat regardless of model speed.
+
+### Failure isolation per provider
+
+Model APIs fail differently — rate limits, content rejections, timeouts, silent quality regressions. Each failure class maps to a distinct handling strategy: retry with backoff, surface to user, or route elsewhere. One provider's bad day never becomes the platform's bad day.
+
+### Cost and quota control
+
+Every job carries a real cost. Concurrency limits, per-user quotas, and attempt caps are enforced at the queue layer, so cost is a controlled variable rather than a monthly surprise.
+
+## Challenges
+
+**Partial failure mid-generation.** A provider that accepts a job and then dies leaves ambiguous state — charged or not, generated or not. Idempotency keys and reconciliation passes against provider state resolved ambiguity deterministically.
+
+**Honest progress reporting.** Model APIs rarely report progress. The UI communicates job state truthfully — queued is queued, running is running — rather than rendering a fake percentage.
+
+**Timeout classification.** A slow success and a hung request look identical until a deadline policy distinguishes them. Timeouts were set from observed latency distributions, then enforced uniformly.
+
+## Results
+
+- Generation throughput decoupled from request latency via the **async job engine**
+- **Zero lost jobs** — durable state in PostgreSQL survives worker failure
+- Provider failures isolated and absorbed without user-facing outages
+- Cost per generation made observable and controllable at the queue layer

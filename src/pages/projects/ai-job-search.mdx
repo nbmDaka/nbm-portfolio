@@ -1,0 +1,67 @@
+---
+layout: ../../layouts/CaseStudyLayout.astro
+title: AI Job Search Platform
+description: A RAG retrieval pipeline that converts unstructured candidate intent into semantically ranked, relevant job matches.
+system: SYS_002
+period: 2025 / ROCKY ROCKS
+role: AI Platform Engineer
+metric: RAG
+metricLabel: retrieval pipeline · semantic search at production scale
+stack:
+  - RAG
+  - Vector DB
+  - Embeddings
+  - AI APIs
+flow:
+  - USER QUERY
+  - EMBEDDING
+  - VECTOR DB
+  - SEMANTIC SEARCH
+  - AI RANKING
+accent: indigo
+---
+
+## Problem
+
+Keyword search fails at exactly the moment job search matters most. A candidate who writes "I build backend systems in Go" should surface platform engineering roles — not only postings that literally contain the word "Go". Job descriptions are unstructured, inconsistent, and written by hundreds of different employers; candidate intent is equally unstructured.
+
+The platform needed **semantic retrieval**: match meaning, not tokens, and return ranked results fast enough to feel like search, not like a batch job.
+
+## Architecture
+
+The system is a **RAG pipeline** built as a production service, not a demo. Candidate queries and job documents are normalized and embedded into a shared vector space. The **vector database** performs approximate nearest-neighbor retrieval to produce candidate matches; a downstream AI ranking stage assembles context and re-ranks for final recommendations.
+
+Freshness is designed in: new or updated job postings flow through the embedding pipeline continuously, so the index reflects the live market rather than a nightly snapshot.
+
+## Engineering decisions
+
+### Retrieval before generation
+
+Relevance is won or lost at retrieval. The pipeline invests in clean document normalization — title, responsibilities, requirements, seniority signals — before embedding, because a perfect model cannot recover from noisy input.
+
+### Hybrid ranking
+
+Vector similarity alone optimizes for semantic closeness, not for match quality. Retrieval output is re-ranked by an AI stage that weighs intent fit, seniority alignment, and requirement overlap. The result is a ranking that explains itself.
+
+### Latency budget as a constraint
+
+Interactive search has a hard latency budget. Embedding generation, vector query, and re-ranking were each measured and bounded; anything that could not meet the budget was moved off the synchronous path.
+
+### Evaluation loop
+
+"Relevant" is meaningless without measurement. Query-to-match quality was evaluated against curated cases, and pipeline changes shipped only when relevance moved in the right direction.
+
+## Challenges
+
+**Unstructured, inconsistent source data.** Job postings range from one line to legal documents. Normalization and chunking strategy mattered more than model choice — most early quality gains came from data shaping, not from switching models.
+
+**Embedding drift and index freshness.** As postings changed, stale embeddings silently degraded match quality. Continuous re-embedding with versioned indexes kept retrieval honest.
+
+**Cold-start relevance.** With little behavioral signal, ranking had to lean on content quality. Structured requirement extraction gave the ranker signal that raw text could not.
+
+## Results
+
+- Semantic search replaced brittle keyword matching across the live job catalog
+- **RAG pipeline** deployed to production with continuous embedding and re-ranking
+- AI recommendations that match candidate **intent**, not just vocabulary
+- Retrieval quality tracked through an explicit evaluation loop, not anecdote

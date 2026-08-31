@@ -1,0 +1,58 @@
+---
+const path = Astro.url.pathname;
+---
+
+<header class="nav-wrap">
+  <nav class="nav page-shell" aria-label="Primary navigation">
+    <a class="brand" href="/" aria-label="Nurdaulet Beketov, home">
+      <span class="brand-mark">NB</span>
+      <span class="brand-name">NURDAULET.DEV</span>
+    </a>
+    <div class="nav-links">
+      <a class:list={[{ active: path === '/' }]} href="/#profile">Profile</a>
+      <a href="/#experience">Experience</a>
+      <a class:list={[{ active: path.startsWith('/projects') }]} href="/#projects">Systems</a>
+      <a class:list={[{ active: path === '/stack' }]} href="/stack">Stack</a>
+    </div>
+    <button class="command-key" type="button" data-open-command aria-label="Open command palette">
+      <span>⌘</span><span>K</span>
+    </button>
+  </nav>
+</header>
+
+<style>
+  .nav-wrap {
+    position: fixed;
+    z-index: 50;
+    inset: 0 0 auto;
+    border-bottom: 1px solid rgba(255,255,255,0.075);
+    background: rgba(5,5,5,0.78);
+    backdrop-filter: blur(18px);
+  }
+  .nav {
+    display: flex;
+    height: 4.25rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand { display: flex; align-items: center; gap: 0.75rem; color: white; text-decoration: none; }
+  .brand-mark {
+    display: grid; width: 1.75rem; height: 1.75rem; place-items: center;
+    border: 1px solid rgba(0,255,136,0.55); border-radius: 0.25rem;
+    color: #00ff88; font: 500 0.58rem/1 'JetBrains Mono', monospace;
+  }
+  .brand-name { font: 500 0.7rem/1 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+  .nav-links { display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 2.5rem); }
+  .nav-links a { color: #71717a; font-size: 0.76rem; text-decoration: none; transition: color 160ms ease; }
+  .nav-links a:hover, .nav-links a.active { color: white; }
+  .command-key {
+    display: flex; gap: 0.3rem; align-items: center; min-width: 3.2rem; justify-content: center;
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 0.3rem;
+    background: rgba(255,255,255,0.035); padding: 0.45rem 0.6rem; color: #a1a1aa;
+    font: 500 0.66rem/1 'JetBrains Mono', monospace; cursor: pointer;
+  }
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .brand-name { font-size: 0.64rem; }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ArchitectureDiagram from '../components/ArchitectureDiagram.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    system: string;
+    role: string;
+    period: string;
+    metric: string;
+    metricLabel: string;
+    stack: string[];
+    flow: string[];
+    accent?: 'green' | 'indigo' | 'white';
+  };
+}
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={`${frontmatter.title} — Nurdaulet Beketov`} description={frontmatter.description}>
+  <article class:list={['case-study', frontmatter.accent ?? 'green']}>
+    <header class="case-hero page-shell">
+      <a class="back" href="/#projects">← RETURN TO SYSTEMS</a>
+      <div class="case-meta"><span>{frontmatter.system}</span><span>{frontmatter.period}</span><i>PRODUCTION CASE STUDY</i></div>
+      <h1>{frontmatter.title}</h1>
+      <p>{frontmatter.description}</p>
+      <div class="case-stats">
+        <div><span>PRIMARY OUTCOME</span><strong>{frontmatter.metric}</strong><p>{frontmatter.metricLabel}</p></div>
+        <div><span>ROLE</span><strong class="small">{frontmatter.role}</strong><p>architecture / implementation / operations</p></div>
+        <div><span>TECHNOLOGY</span><ul>{frontmatter.stack.map((item) => <li>{item}</li>)}</ul></div>
+      </div>
+    </header>
+    <section class="architecture page-shell">
+      <div class="arch-head"><div><span>ARCHITECTURE / FLOW</span><h2>System topology</h2></div><p>A simplified production path focused on the critical flow.</p></div>
+      <ArchitectureDiagram nodes={frontmatter.flow} accent={frontmatter.accent} />
+    </section>
+    <section class="case-body page-shell prose-engineering"><slot /></section>
+    <nav class="case-next page-shell"><a href="/#projects"><span>ALL SYSTEMS</span><strong>Return to system index</strong><b>↗</b></a></nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .case-study { padding-top: 4.25rem; }
+  .case-hero { padding-top: clamp(4rem,8vw,8rem); }
+  .back { display:inline-block;margin-bottom:3rem;color:#71717a;font:500 .58rem/1 'JetBrains Mono',monospace;letter-spacing:.09em;text-decoration:none}.back:hover{color:#00ff88}
+  .case-meta { display:flex;gap:1.5rem;color:#71717a;font:500 .59rem/1 'JetBrains Mono',monospace;letter-spacing:.09em}.case-meta i{margin-left:auto;color:#00ff88;font-style:normal}.indigo .case-meta i{color:#818cf8}.white .case-meta i{color:#d4d4d8}
+  h1 { max-width: 1050px; margin: 2rem 0 0; font: 510 clamp(3.7rem,8vw,8rem)/.88 'Geist Variable',sans-serif; letter-spacing: -.07em; }
+  .case-hero>p { max-width:720px;margin:2rem 0 0;color:#a1a1aa;font-size:clamp(1rem,1.8vw,1.25rem);line-height:1.7}
+  .case-stats { display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:5rem;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+  .case-stats>div{min-height:12rem;padding:1.25rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.case-stats span{display:block;color:#52525b;font:500 .56rem/1 'JetBrains Mono',monospace;letter-spacing:.1em}.case-stats strong{display:block;margin-top:2.7rem;color:#00ff88;font:500 clamp(2rem,4vw,4.25rem)/.9 'Geist Variable',sans-serif;letter-spacing:-.05em}.indigo .case-stats strong{color:#818cf8}.white .case-stats strong{color:#fff}.case-stats strong.small{color:#fff;font-size:clamp(1.4rem,2.5vw,2.5rem)}.case-stats p{margin:.65rem 0 0;color:#71717a;font-size:.7rem}.case-stats ul{display:flex;flex-wrap:wrap;gap:.6rem;margin:2.5rem 0 0;padding:0;list-style:none}.case-stats li{border:1px solid var(--line);padding:.45rem .6rem;color:#a1a1aa;font:400 .58rem/1 'JetBrains Mono',monospace}
+  .architecture { padding-top:clamp(6rem,10vw,10rem) }.arch-head{display:flex;align-items:end;justify-content:space-between;gap:2rem}.arch-head span{color:#52525b;font:500 .56rem/1 'JetBrains Mono',monospace;letter-spacing:.1em}.arch-head h2{margin:.8rem 0 0;font:510 clamp(2rem,4vw,4rem)/1 'Geist Variable',sans-serif;letter-spacing:-.05em}.arch-head p{max-width:350px;margin:0;color:#71717a;font-size:.8rem;line-height:1.5}
+  .case-body { padding-top: clamp(5rem,9vw,9rem); padding-bottom: clamp(6rem,10vw,10rem); }
+  .case-body :global(h2:first-child){margin-top:0}.case-next{padding-bottom:5rem}.case-next a{display:grid;grid-template-columns:.5fr 1fr auto;align-items:center;min-height:7rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:#fff;text-decoration:none}.case-next span{color:#52525b;font:500 .56rem/1 'JetBrains Mono',monospace;letter-spacing:.1em}.case-next strong{font:500 clamp(1.2rem,2vw,1.8rem)/1 'Geist Variable',sans-serif}.case-next b{font-weight:400;color:#71717a}
+  @media(max-width:720px){.case-meta{flex-wrap:wrap}.case-meta i{width:100%;margin:0}.case-stats{grid-template-columns:1fr}.case-stats>div{min-height:10rem}.arch-head{display:block}.arch-head p{margin-top:1rem}.case-next a{grid-template-columns:1fr auto}.case-next span{grid-column:1/-1}.case-next strong{margin-top:-1rem}}
+</style>

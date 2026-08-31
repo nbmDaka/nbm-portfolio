@@ -1,0 +1,65 @@
+---
+import TerminalConsole from './react/TerminalConsole';
+import SystemNetwork from './react/SystemNetwork';
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-grid grid-field" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-inner page-shell">
+    <div class="hero-copy">
+      <div class="system-status"><i></i><span>SYSTEM ONLINE</span><b>UTC+5 / ASTANA</b></div>
+      <h1 id="hero-title">Engineering systems<br /><span>built to hold.</span></h1>
+      <p>Backend infrastructure for high-concurrency products, event-driven platforms, and production AI.</p>
+      <div class="hero-actions">
+        <a class="primary-action" href="#projects">Inspect systems <span>↘</span></a>
+        <button class="hairline-button" type="button" data-open-command>Open console <kbd>⌘K</kbd></button>
+      </div>
+    </div>
+    <div class="visual" aria-label="Animated backend system topology">
+      <SystemNetwork client:only="react" mode="hero" />
+    </div>
+    <div class="console"><TerminalConsole client:visible /></div>
+    <div class="hero-index" aria-hidden="true">
+      <span>PORTFOLIO / 2026</span><span>SCROLL TO INSPECT</span><i></i>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; min-height: 100svh; overflow: hidden; padding-top: 4.25rem; }
+  .hero-grid { position: absolute; inset: 4.25rem 0 auto; height: 65%; opacity: .7; }
+  .hero-glow { position: absolute; top: 0; right: -20%; width: 65vw; height: 65vw; background: radial-gradient(circle, rgba(99,102,241,.075), transparent 58%); pointer-events: none; }
+  .hero-inner { position: relative; display: grid; min-height: calc(100svh - 4.25rem); grid-template-columns: minmax(0, 1.02fr) minmax(330px, .98fr); grid-template-rows: auto auto auto; align-items: center; gap: 1.75rem 4vw; padding-top: clamp(4rem, 8vw, 7rem); padding-bottom: 2rem; }
+  .hero-copy { position: relative; z-index: 2; align-self: end; padding-bottom: 1rem; }
+  .system-status { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.6rem; color: #00ff88; font: 500 .6rem/1 'JetBrains Mono', monospace; letter-spacing: .11em; }
+  .system-status i { width: .42rem; height: .42rem; border-radius: 50%; background: #00ff88; box-shadow: 0 0 14px rgba(0,255,136,.6); }
+  .system-status b { margin-left: .4rem; color: #3f3f46; font-weight: 400; }
+  h1 { margin: 0; font-family: 'Geist Variable', sans-serif; font-size: clamp(3.4rem, 6.9vw, 7.4rem); font-weight: 520; letter-spacing: -.072em; line-height: .87; }
+  h1 span { color: #71717a; }
+  .hero-copy > p { max-width: 590px; margin: 2rem 0 0; color: #a1a1aa; font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.7; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
+  .primary-action { display: inline-flex; min-height: 2.8rem; align-items: center; gap: 1.2rem; border-radius: .35rem; background: #fff; padding: .75rem 1rem; color: #050505; font: 600 .72rem/1 'JetBrains Mono', monospace; text-decoration: none; transition: background 180ms ease, transform 180ms ease; }
+  .primary-action:hover { background: #00ff88; transform: translateY(-1px); }
+  .hairline-button { cursor: pointer; }
+  kbd { color: #52525b; font: 500 .55rem/1 'JetBrains Mono', monospace; }
+  .visual { align-self: stretch; min-height: 31rem; }
+  .console { grid-column: 1 / -1; align-self: end; width: min(850px, 74%); margin-top: clamp(1rem, 3vw, 3rem); }
+  .hero-index { display: grid; grid-column: 1 / -1; grid-template-columns: auto auto 1fr; align-items: center; gap: 1rem; color: #3f3f46; font: 500 .52rem/1 'JetBrains Mono', monospace; letter-spacing: .1em; }
+  .hero-index i { height: 1px; background: rgba(255,255,255,.07); }
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; padding-top: 5rem; }
+    .hero-copy { align-self: start; }
+    .visual { position: absolute; z-index: 0; top: 20rem; right: -12rem; width: 40rem; opacity: .52; }
+    .console { position: relative; z-index: 1; grid-column: 1; width: 100%; margin-top: 6rem; }
+    .hero-index { grid-column: 1; }
+  }
+  @media (max-width: 520px) {
+    .hero-inner { padding-top: 4.5rem; }
+    h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+    .visual { top: 21rem; right: -15rem; opacity: .42; }
+    .console { margin-top: 5rem; }
+    .system-status b { display: none; }
+    .hero-index span:nth-child(2) { display: none; }
+  }
+</style>

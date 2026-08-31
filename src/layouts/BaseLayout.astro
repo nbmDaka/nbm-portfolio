@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import SiteNav from '../components/SiteNav.astro';
+import CommandPalette from '../components/react/CommandPalette';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Nurdaulet Beketov — Backend Software Engineer',
+  description = 'Backend Software Engineer specializing in distributed systems, Go, Java, and AI infrastructure.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#050505" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteNav />
+    <main id="main"><slot /></main>
+    <CommandPalette client:idle />
+    <style>
+      .skip-link {
+        position: fixed;
+        z-index: 100;
+        top: 0.75rem;
+        left: 0.75rem;
+        translate: 0 -200%;
+        border-radius: 0.25rem;
+        background: #00ff88;
+        padding: 0.75rem 1rem;
+        color: #050505;
+        font: 600 0.75rem/1 'JetBrains Mono', monospace;
+      }
+      .skip-link:focus { translate: 0; }
+    </style>
+  </body>
+</html>

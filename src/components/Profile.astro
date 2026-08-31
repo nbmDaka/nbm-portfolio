@@ -1,0 +1,54 @@
+---
+const modules = [
+  { id: '01', kind: 'Runtime', title: 'Backend Core', tech: 'Go · Java · Spring Boot · NestJS', detail: 'Typed services, explicit boundaries, predictable failure modes.', state: 'OPERATIONAL' },
+  { id: '02', kind: 'Message System', title: 'Event Architecture', tech: 'Kafka · gRPC · Async workflows', detail: 'Loose coupling for throughput, resilience, and independent scaling.', state: 'OPERATIONAL' },
+  { id: '03', kind: 'Data Layer', title: 'Persistence', tech: 'PostgreSQL · MySQL · Vector DB', detail: 'Schema discipline, query optimization, high-load data paths.', state: 'OPTIMIZED' },
+  { id: '04', kind: 'Intelligence', title: 'AI Infrastructure', tech: 'RAG · Embeddings · AI APIs', detail: 'Production retrieval pipelines built around measurable relevance.', state: 'ONLINE', ai: true },
+];
+---
+
+<section class="section-shell profile" id="profile" aria-labelledby="profile-title">
+  <div class="profile-intro">
+    <div>
+      <p class="eyebrow">01 / Engineering profile</p>
+      <h2 class="section-title" id="profile-title">Backend is a product surface.</h2>
+    </div>
+    <p class="section-copy">I design the systems users never see but always feel: reliable APIs, clear service boundaries, efficient data paths, and infrastructure that stays calm under load.</p>
+  </div>
+  <div class="module-grid">
+    {modules.map((module) => (
+      <article class:list={['module', { ai: module.ai }]}> 
+        <header><span>MOD_{module.id} / {module.kind}</span><code><i></i>{module.state}</code></header>
+        <div class="module-main"><h3>{module.title}</h3><p>{module.tech}</p></div>
+        <footer><p>{module.detail}</p><span aria-hidden="true">↗</span></footer>
+      </article>
+    ))}
+  </div>
+  <div class="profile-foot">
+    <span>DESIGN PRINCIPLES</span>
+    <p>Observable by default</p><p>Scale by evidence</p><p>Simple under pressure</p>
+  </div>
+</section>
+
+<style>
+  .profile-intro { display: grid; grid-template-columns: 1.1fr .9fr; gap: 5vw; align-items: end; }
+  .section-copy { justify-self: end; }
+  .module-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: clamp(4rem,8vw,7rem); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .module { min-height: 19rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); transition: background 200ms ease; }
+  .module:hover { background: rgba(255,255,255,.045); }
+  .module header, .module footer { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; }
+  .module header { border-bottom: 1px solid var(--line); color: #52525b; font: 500 .57rem/1 'JetBrains Mono', monospace; letter-spacing: .09em; text-transform: uppercase; }
+  .module header code { display: flex; align-items: center; gap: .45rem; color: #71717a; font: inherit; }
+  .module header i { width: .3rem; height: .3rem; border-radius: 50%; background: #00ff88; }
+  .module.ai header i { background: #6366f1; box-shadow: 0 0 10px rgba(99,102,241,.7); }
+  .module-main { padding: 2.5rem 1.2rem; }
+  .module h3 { margin: 0; font: 520 clamp(1.8rem,3vw,3rem)/1 'Geist Variable', sans-serif; letter-spacing: -.045em; }
+  .module-main p { margin: .9rem 0 0; color: #00ff88; font: 400 .66rem/1.5 'JetBrains Mono', monospace; }
+  .module.ai .module-main p { color: #818cf8; }
+  .module footer { align-items: end; gap: 2rem; border-top: 1px solid var(--line); }
+  .module footer p { max-width: 330px; margin: 0; color: #71717a; font-size: .75rem; line-height: 1.55; }
+  .module footer span { color: #52525b; font: 400 1rem/1 'JetBrains Mono', monospace; }
+  .profile-foot { display: grid; grid-template-columns: 1.5fr repeat(3,1fr); gap: 1rem; margin-top: 2rem; color: #52525b; font: 500 .57rem/1 'JetBrains Mono', monospace; letter-spacing: .08em; }
+  .profile-foot p { margin: 0; color: #71717a; }
+  @media(max-width:780px){.profile-intro{grid-template-columns:1fr}.section-copy{justify-self:start}.module-grid{grid-template-columns:1fr}.profile-foot{grid-template-columns:1fr 1fr}.profile-foot span{grid-column:span 2}.module{min-height:17rem}}
+</style>

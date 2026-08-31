@@ -1,0 +1,39 @@
+---
+const logs = [
+  { date: '2025-08-14', time: '03:47:22', event: 'Resolved production infrastructure issue', scope: 'linux / nginx / security', status: 'FIXED' },
+  { date: '2025-05-20', time: '16:08:04', event: 'Implemented RAG retrieval pipeline', scope: 'embeddings / vector search', status: 'DEPLOYED' },
+  { date: '2024-04-11', time: '09:32:51', event: 'Scaled assessment services for peak traffic', scope: 'spring / postgres / cache', status: 'STABLE' },
+  { date: '2024-02-03', time: '12:15:09', event: 'Instrumented service health and failure paths', scope: 'metrics / logs / alerts', status: 'OBSERVED' },
+];
+---
+
+<section class="section-shell logs" id="logs" aria-labelledby="logs-title">
+  <div class="logs-head"><div><p class="eyebrow">05 / Engineering logs</p><h2 class="section-title" id="logs-title">Operational record.</h2></div><div class="log-status"><i></i><span>4 ENTRIES INDEXED</span></div></div>
+  <div class="log-window">
+    <header><span>~/engineering/logs</span><code>tail -f production.log</code></header>
+    <div class="log-rows">
+      {logs.map((log, index) => (
+        <article><span class="number">{String(index + 1).padStart(2,'0')}</span><time>{log.date}<i>{log.time}</i></time><p>{log.event}</p><code>{log.scope}</code><b>{log.status}</b></article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logs-head { display: flex; align-items: end; justify-content: space-between; gap: 2rem; }
+  .log-status { display: flex; align-items: center; gap: .6rem; color: #52525b; font: 500 .57rem/1 'JetBrains Mono',monospace; }
+  .log-status i { width: .4rem; height: .4rem; border-radius: 50%; background: #00ff88; }
+  .log-window { margin-top: 4rem; border: 1px solid var(--line); border-radius: .45rem; background: rgba(255,255,255,.018); }
+  .log-window > header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); color: #71717a; font: 400 .6rem/1 'JetBrains Mono',monospace; }
+  .log-window > header code { color: #3f3f46; font: inherit; }
+  .log-rows article { display: grid; grid-template-columns: 3rem 9rem 1.4fr 1fr auto; align-items: center; gap: 1rem; min-height: 5.5rem; padding: 0 1.2rem; border-bottom: 1px solid var(--line); }
+  .log-rows article:last-child { border-bottom: 0; }
+  .number { color: #3f3f46; font: 400 .58rem/1 'JetBrains Mono',monospace; }
+  time { display: flex; flex-direction: column; gap: .35rem; color: #a1a1aa; font: 400 .63rem/1 'JetBrains Mono',monospace; }
+  time i { color: #3f3f46; font-style: normal; }
+  article p { margin: 0; color: #d4d4d8; font-size: .8rem; line-height: 1.4; }
+  article code { color: #52525b; font: 400 .56rem/1.3 'JetBrains Mono',monospace; }
+  article b { min-width: 4.8rem; border: 1px solid rgba(0,255,136,.17); border-radius: 99px; padding: .42rem .55rem; color: #00ff88; font: 500 .5rem/1 'JetBrains Mono',monospace; text-align: center; }
+  @media(max-width:800px){.log-rows article{grid-template-columns:2rem 8rem 1fr auto}.log-rows article code{display:none}}
+  @media(max-width:580px){.logs-head{display:block}.log-status{margin-top:1.5rem}.log-window>header code{display:none}.log-rows article{grid-template-columns:2rem 1fr auto;gap:.6rem;padding-block:1rem}.log-rows time{grid-column:2}.log-rows p{grid-column:2;grid-row:2}.log-rows article b{grid-column:3;grid-row:1/3}.number{grid-row:1/3}}
+</style>

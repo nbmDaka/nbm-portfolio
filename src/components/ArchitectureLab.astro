@@ -1,0 +1,26 @@
+---
+import SystemNetwork from './react/SystemNetwork';
+---
+
+<section class="section-shell lab" id="lab" aria-labelledby="lab-title">
+  <div class="lab-copy">
+    <p class="eyebrow">04 / Architecture lab</p>
+    <h2 class="section-title" id="lab-title">Inspect the system.</h2>
+    <p class="section-copy">A service map is only useful when it explains behavior. Rotate the topology and select a node to inspect its responsibility.</p>
+    <div class="lab-legend">
+      <span><i class="green"></i>CORE RUNTIME</span><span><i class="indigo"></i>AI LAYER</span><span><i></i>INFRASTRUCTURE</span>
+    </div>
+  </div>
+  <div class="lab-stage"><SystemNetwork client:only="react" mode="lab" /></div>
+</section>
+
+<style>
+  .lab { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(2rem,6vw,7rem); align-items: center; }
+  .lab-copy { padding-block: 2rem; }
+  .lab-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 3rem; color: #52525b; font: 500 .53rem/1 'JetBrains Mono', monospace; }
+  .lab-legend span { display: flex; align-items: center; gap: .45rem; }
+  .lab-legend i { width: .38rem; height: .38rem; border-radius: 50%; background: #7c7c83; }
+  .lab-legend .green { background:#00ff88; }.lab-legend .indigo{background:#6366f1}
+  .lab-stage { min-width: 0; }
+  @media(max-width:900px){.lab{grid-template-columns:1fr}.lab-copy{padding:0}.lab-stage{margin-top:1rem}}
+</style>
