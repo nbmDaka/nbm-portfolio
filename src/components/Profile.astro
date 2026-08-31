@@ -1,23 +1,33 @@
 ---
-const modules = [
-  { id: '01', kind: 'Runtime', title: 'Backend Core', tech: 'Go · Java · Spring Boot · NestJS', detail: 'Typed services, explicit boundaries, predictable failure modes.', state: 'OPERATIONAL' },
-  { id: '02', kind: 'Message System', title: 'Event Architecture', tech: 'Kafka · gRPC · Async workflows', detail: 'Loose coupling for throughput, resilience, and independent scaling.', state: 'OPERATIONAL' },
-  { id: '03', kind: 'Data Layer', title: 'Persistence', tech: 'PostgreSQL · MySQL · Vector DB', detail: 'Schema discipline, query optimization, high-load data paths.', state: 'OPTIMIZED' },
-  { id: '04', kind: 'Intelligence', title: 'AI Infrastructure', tech: 'RAG · Embeddings · AI APIs', detail: 'Production retrieval pipelines built around measurable relevance.', state: 'ONLINE', ai: true },
-];
+import { useTranslations } from '../i18n/ui';
+
+const t = useTranslations(Astro.currentLocale).profile;
 ---
 
 <section class="section-shell profile" id="profile" aria-labelledby="profile-title">
   <div class="profile-intro">
     <div>
-      <p class="eyebrow">01 / Engineering profile</p>
-      <h2 class="section-title" id="profile-title">Backend is a product surface.</h2>
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 class="section-title" id="profile-title">{t.title}</h2>
+      <p class="section-copy">{t.copy}</p>
     </div>
-    <p class="section-copy">I design the systems users never see but always feel: reliable APIs, clear service boundaries, efficient data paths, and infrastructure that stays calm under load.</p>
+    <aside class="operator-card" aria-label={t.aboutLabel}>
+      <div class="operator-top">
+        <img src="/portrait.jpg" alt="" width="72" height="72" />
+        <div>
+          <span class="operator-label"><i></i>{t.aboutLabel}</span>
+          <strong>NURDAULET BEKETOV</strong>
+        </div>
+      </div>
+      <p class="operator-bio">{t.about}</p>
+      <ul>
+        {t.aboutMeta.map((item) => <li>{item}</li>)}
+      </ul>
+    </aside>
   </div>
   <div class="module-grid">
-    {modules.map((module) => (
-      <article class:list={['module', { ai: module.ai }]}> 
+    {t.modules.map((module) => (
+      <article class:list={['module', { ai: module.ai }]}>
         <header><span>MOD_{module.id} / {module.kind}</span><code><i></i>{module.state}</code></header>
         <div class="module-main"><h3>{module.title}</h3><p>{module.tech}</p></div>
         <footer><p>{module.detail}</p><span aria-hidden="true">↗</span></footer>
@@ -25,14 +35,23 @@ const modules = [
     ))}
   </div>
   <div class="profile-foot">
-    <span>DESIGN PRINCIPLES</span>
-    <p>Observable by default</p><p>Scale by evidence</p><p>Simple under pressure</p>
+    <span>{t.footLabel}</span>
+    {t.foot.map((item) => <p>{item}</p>)}
   </div>
 </section>
 
 <style>
   .profile-intro { display: grid; grid-template-columns: 1.1fr .9fr; gap: 5vw; align-items: end; }
-  .section-copy { justify-self: end; }
+  .section-copy { justify-self: start; }
+  .operator-card { border: 1px solid var(--line); border-radius: .45rem; background: var(--surface); padding: 1.5rem; }
+  .operator-top { display: flex; align-items: center; gap: 1.1rem; }
+  .operator-top img { width: 4.5rem; height: 4.5rem; border: 1px solid var(--line-strong); border-radius: .4rem; object-fit: cover; object-position: center 22%; background: #0a0a0b; }
+  .operator-label { display: flex; align-items: center; gap: .5rem; color: #52525b; font: 500 .55rem/1 'JetBrains Mono', monospace; letter-spacing: .14em; }
+  .operator-label i { width: .35rem; height: .35rem; border-radius: 50%; background: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,.6); }
+  .operator-top strong { display: block; margin-top: .55rem; font: 500 .82rem/1 'JetBrains Mono', monospace; letter-spacing: .08em; }
+  .operator-bio { margin: 1.25rem 0 0; color: #a1a1aa; font-size: .86rem; line-height: 1.7; }
+  .operator-card ul { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.4rem 0 0; padding: 1.25rem 0 0; list-style: none; border-top: 1px solid var(--line); }
+  .operator-card li { border: 1px solid var(--line); border-radius: 99px; padding: .4rem .65rem; color: #71717a; font: 400 .58rem/1 'JetBrains Mono', monospace; }
   .module-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: clamp(4rem,8vw,7rem); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
   .module { min-height: 19rem; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); transition: background 200ms ease; }
   .module:hover { background: rgba(255,255,255,.045); }
@@ -50,5 +69,5 @@ const modules = [
   .module footer span { color: #52525b; font: 400 1rem/1 'JetBrains Mono', monospace; }
   .profile-foot { display: grid; grid-template-columns: 1.5fr repeat(3,1fr); gap: 1rem; margin-top: 2rem; color: #52525b; font: 500 .57rem/1 'JetBrains Mono', monospace; letter-spacing: .08em; }
   .profile-foot p { margin: 0; color: #71717a; }
-  @media(max-width:780px){.profile-intro{grid-template-columns:1fr}.section-copy{justify-self:start}.module-grid{grid-template-columns:1fr}.profile-foot{grid-template-columns:1fr 1fr}.profile-foot span{grid-column:span 2}.module{min-height:17rem}}
+  @media(max-width:780px){.profile-intro{grid-template-columns:1fr}.module-grid{grid-template-columns:1fr}.profile-foot{grid-template-columns:1fr 1fr}.profile-foot span{grid-column:span 2}.module{min-height:17rem}}
 </style>

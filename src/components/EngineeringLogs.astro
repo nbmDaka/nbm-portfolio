@@ -1,4 +1,8 @@
 ---
+import { useTranslations } from '../i18n/ui';
+
+const t = useTranslations(Astro.currentLocale).logs;
+
 const logs = [
   {
     date: '2025-08-14',
@@ -28,7 +32,7 @@ const logs = [
     date: '2024',
     type: 'IMPLEMENTATION',
     event: 'Scaled national testing services for exam-window peaks',
-    resolution: 'Load-tested before windows; capacity added horizontally [VERIFY METRIC: peak load held]',
+    resolution: 'Load-tested before windows; capacity added horizontally',
     lesson: 'Capacity is proven by rehearsal, not assumption',
     status: 'STABLE',
   },
@@ -36,7 +40,7 @@ const logs = [
     date: '2024',
     type: 'DECISION',
     event: 'Kept exam writes retry-safe under double-clicks and network retries',
-    resolution: 'Retry-safe answer persistence on the write path [VERIFY DETAILS: mechanism]',
+    resolution: 'Retry-safe answer persistence on the write path',
     lesson: 'Correctness under chaos is an API property',
     status: 'DEPLOYED',
   },
@@ -44,7 +48,7 @@ const logs = [
 ---
 
 <section class="section-shell logs" id="logs" aria-labelledby="logs-title">
-  <div class="logs-head"><div><p class="eyebrow">05 / Engineering logs</p><h2 class="section-title" id="logs-title">Operational record.</h2></div><div class="log-status"><i></i><span>{logs.length} ENTRIES INDEXED</span></div></div>
+  <div class="logs-head"><div><p class="eyebrow">{t.eyebrow}</p><h2 class="section-title" id="logs-title">{t.title}</h2></div><div class="log-status"><i></i><span>{logs.length} {t.indexed}</span></div></div>
   <div class="log-window">
     <header><span>~/engineering/logs</span><code>tail -f production.log</code></header>
     <div class="log-rows">

@@ -15,13 +15,13 @@ type NodeData = {
 };
 
 const nodes: NodeData[] = [
-  { id: 'edge', label: 'EDGE', type: 'Gateway / Nginx', purpose: 'Single entry point for all client traffic', role: 'TLS termination, rate limiting, request routing', why: 'One controlled boundary keeps internal services simple and policies consistent', position: [-3.4, 1.3, 0] },
-  { id: 'api', label: 'API', type: 'Go Service', purpose: 'Low-latency orchestration of incoming requests', role: 'Coordinates calls between services and shapes responses', why: 'Go fits I/O-heavy services: cheap concurrency and a small latency footprint', position: [-1.2, .35, .35], accent: 'green' },
-  { id: 'events', label: 'KAFKA', type: 'Event Bus', purpose: 'Decouple producers from consumers', role: 'Durable event backbone for asynchronous workflows', why: 'Events survive consumer downtime; services scale and fail independently', position: [.7, 1.6, -.25] },
-  { id: 'workers', label: 'WORKERS', type: 'Spring Boot Services', purpose: 'Execute domain logic', role: 'Stateless services — capacity scales by instance count', why: 'Mature ecosystem and predictable behavior under sustained load', position: [1.25, -.35, .2] },
-  { id: 'data', label: 'DATA', type: 'PostgreSQL', purpose: 'Transactional source of truth', role: 'Owns critical state with ACID guarantees', why: 'Relational integrity plus real query-optimization headroom', position: [3.35, .95, -.15] },
-  { id: 'vector', label: 'VECTOR', type: 'Vector Store', purpose: 'Semantic retrieval over unstructured data', role: 'Stores embeddings and serves nearest-neighbor search', why: 'Purpose-built indexes make similarity search fast at scale', position: [3.1, -1.15, .3], accent: 'indigo' },
-  { id: 'ai', label: 'AI', type: 'RAG Pipeline', purpose: 'Turn retrieval into grounded output', role: 'Context assembly, re-ranking, model inference', why: 'Grounding responses in retrieved data reduces hallucination', position: [.45, -1.75, -.2], accent: 'indigo' },
+  { id: 'edge', label: 'API LAYER', type: 'Gateway / Nginx', purpose: 'Single entry point for all client traffic', role: 'TLS termination, rate limiting, request routing', why: 'One controlled boundary keeps internal services simple and policies consistent', position: [-3.4, 1.3, 0] },
+  { id: 'api', label: 'CORE API', type: 'Go Service', purpose: 'Low-latency orchestration of incoming requests', role: 'Coordinates calls between services and shapes responses', why: 'Go fits I/O-heavy services: cheap concurrency and a small latency footprint', position: [-1.2, .35, .35], accent: 'green' },
+  { id: 'events', label: 'QUEUE', type: 'Message Queue / Kafka', purpose: 'Decouple producers from consumers', role: 'Durable event backbone for asynchronous workflows', why: 'Events survive consumer downtime; services scale and fail independently', position: [.7, 1.6, -.25] },
+  { id: 'workers', label: 'SERVICES', type: 'Spring Boot Services', purpose: 'Execute domain logic', role: 'Stateless services — capacity scales by instance count', why: 'Mature ecosystem and predictable behavior under sustained load', position: [1.25, -.35, .2] },
+  { id: 'data', label: 'DATABASE', type: 'PostgreSQL', purpose: 'Transactional source of truth', role: 'Owns critical state with ACID guarantees', why: 'Relational integrity plus real query-optimization headroom', position: [3.35, .95, -.15] },
+  { id: 'vector', label: 'RETRIEVAL', type: 'AI Retrieval Layer', purpose: 'Semantic retrieval over unstructured data', role: 'Stores embeddings and serves nearest-neighbor search', why: 'Purpose-built indexes make similarity search fast at scale', position: [3.1, -1.15, .3], accent: 'indigo' },
+  { id: 'ai', label: 'RAG', type: 'RAG Pipeline', purpose: 'Turn retrieval into grounded output', role: 'Context assembly, re-ranking, model inference', why: 'Grounding responses in retrieved data reduces hallucination', position: [.45, -1.75, -.2], accent: 'indigo' },
 ];
 
 const links = [[0,1],[1,2],[1,3],[2,3],[3,4],[3,5],[5,6],[2,6]] as const;

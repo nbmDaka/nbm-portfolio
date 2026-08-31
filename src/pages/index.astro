@@ -1,36 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
-import ImpactMetrics from '../components/ImpactMetrics.astro';
-import Profile from '../components/Profile.astro';
-import ExperienceTimeline from '../components/react/ExperienceTimeline';
-import Projects from '../components/Projects.astro';
-import ArchitectureLab from '../components/ArchitectureLab.astro';
-import EngineeringLogs from '../components/EngineeringLogs.astro';
-import EngineeringPrinciples from '../components/EngineeringPrinciples.astro';
-import Contact from '../components/Contact.astro';
+import HomePage from '../components/HomePage.astro';
 ---
 
-<BaseLayout>
-  <Hero />
-  <ImpactMetrics />
-  <Profile />
-  <section class="section-shell experience" id="experience" aria-labelledby="experience-title">
-    <div class="experience-head">
-      <div><p class="eyebrow">02 / Runtime history</p><h2 class="section-title" id="experience-title">Systems, not titles.</h2></div>
-      <p class="section-copy">A timeline of production constraints: national traffic, semantic retrieval, and infrastructure that could not afford ambiguity.</p>
-    </div>
-    <ExperienceTimeline client:visible />
-  </section>
-  <Projects />
-  <ArchitectureLab />
-  <EngineeringLogs />
-  <EngineeringPrinciples />
-  <Contact />
-</BaseLayout>
-
-<style>
-  .experience-head { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 5vw; }
-  .experience-head .section-copy { justify-self: end; }
-  @media(max-width:780px){.experience-head{grid-template-columns:1fr}.experience-head .section-copy{justify-self:start}}
-</style>
+<HomePage />

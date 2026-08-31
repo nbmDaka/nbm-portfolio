@@ -1,21 +1,18 @@
 ---
-const metrics = [
-  { value: '3.5M+', label: 'users served', detail: 'National testing platform — registration through exam delivery', tone: 'green' },
-  { value: '40K–50K', label: 'peak concurrent users', detail: 'Held through exam windows without losing submissions', tone: 'green' },
-  { value: 'AI', label: 'RAG & vector search', detail: 'Retrieval pipelines and semantic job matching in production', tone: 'indigo' },
-  { value: 'PROD', label: 'large-scale systems', detail: 'Deployments, Linux infrastructure, and incident response', tone: 'white' },
-];
+import { useTranslations } from '../i18n/ui';
+
+const t = useTranslations(Astro.currentLocale).impact;
 ---
 
 <section class="impact" id="impact" aria-labelledby="impact-title">
   <div class="impact-inner page-shell">
     <div class="impact-head">
-      <p class="eyebrow">Impact / Production record</p>
-      <h2 id="impact-title" class="sr-only">Career impact in production</h2>
-      <p class="impact-note">Scale this engineer has personally built and operated. Numbers from production systems, not side projects.</p>
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 id="impact-title" class="sr-only">{t.title}</h2>
+      <p class="impact-note">{t.note}</p>
     </div>
     <div class="impact-grid">
-      {metrics.map((metric) => (
+      {t.metrics.map((metric) => (
         <div class:list={['metric', metric.tone]}>
           <strong>{metric.value}</strong>
           <span>{metric.label}</span>

@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "title": "Nurdaulet Beketov — Backend Software Engineer",
+    "description": "Backend Software Engineer specializing in distributed systems, Go, Java, and AI infrastructure.",
+    "stackTitle": "Stack — Nurdaulet Beketov",
+    "stackDescription": "The technology modules behind Nurdaulet Beketov's production systems: backend runtimes, infrastructure, data systems, and AI."
+  },
+  "common": { "skip": "Skip to content" },
+  "nav": {
+    "profile": "Profile",
+    "experience": "Experience",
+    "systems": "Systems",
+    "stack": "Stack",
+    "resume": "Resume",
+    "homeLabel": "Nurdaulet Beketov, home",
+    "paletteLabel": "Open command palette"
+  },
+  "hero": {
+    "name": "Nurdaulet Beketov",
+    "portraitAlt": "Portrait of Nurdaulet Beketov",
+    "titleA": "Backend engineer building",
+    "titleB": "high-scale systems & AI products.",
+    "stack": ["Go", "Java", "Distributed Systems", "AI Infrastructure"],
+    "sub": "Production backends for national-scale testing, semantic job search, and AI media generation.",
+    "cta": "See impact",
+    "console": "Open console",
+    "indexB": "SCROLL TO INSPECT"
+  },
+  "impact": {
+    "eyebrow": "Impact / Production record",
+    "title": "Career impact in production",
+    "note": "The scale this engineer has personally built and operated.",
+    "metrics": [
+      { "value": "3.5M+", "label": "users served", "detail": "National testing platform — registration through exam delivery", "tone": "green" },
+      { "value": "40K–50K", "label": "peak concurrent users", "detail": "Held through exam windows without losing submissions", "tone": "green" },
+      { "value": "AI", "label": "RAG & vector search", "detail": "Retrieval pipelines and semantic job matching in production", "tone": "indigo" },
+      { "value": "PROD", "label": "large-scale systems", "detail": "Deployments, Linux infrastructure, and incident response", "tone": "white" }
+    ]
+  },
+  "profile": {
+    "eyebrow": "01 / Engineering profile",
+    "title": "Backend is a product surface.",
+    "copy": "I design the systems users never see but always feel: reliable APIs, clear service boundaries, efficient data paths, and infrastructure that stays calm under load.",
+    "aboutLabel": "OPERATOR",
+    "about": "Based in Astana, Kazakhstan. I work across the full backend lifecycle — schema design, implementation, deployment, and the 3AM pages. I care about systems that fail gracefully and teams that can operate them calmly.",
+    "aboutMeta": ["Backend Software Engineer", "Astana, Kazakhstan", "English / Russian"],
+    "footLabel": "DESIGN PRINCIPLES",
+    "foot": ["Observable by default", "Scale by evidence", "Simple under pressure"],
+    "modules": [
+      { "id": "01", "kind": "Runtime", "title": "Backend Core", "tech": "Go · Java · Spring Boot · NestJS", "detail": "Typed services, explicit boundaries, predictable failure modes.", "state": "OPERATIONAL", "ai": false },
+      { "id": "02", "kind": "Message System", "title": "Event Architecture", "tech": "Kafka · gRPC · Async workflows", "detail": "Loose coupling for throughput, resilience, and independent scaling.", "state": "OPERATIONAL", "ai": false },
+      { "id": "03", "kind": "Data Layer", "title": "Persistence", "tech": "PostgreSQL · MySQL · Vector DB", "detail": "Schema discipline, query optimization, high-load data paths.", "state": "OPTIMIZED", "ai": false },
+      { "id": "04", "kind": "Intelligence", "title": "AI Infrastructure", "tech": "RAG · Embeddings · AI APIs", "detail": "Production retrieval pipelines built around measurable relevance.", "state": "ONLINE", "ai": true }
+    ]
+  },
+  "experience": {
+    "eyebrow": "02 / Runtime history",
+    "title": "Systems, not titles.",
+    "copy": "A timeline of production constraints: national traffic, semantic retrieval, and infrastructure that could not afford ambiguity.",
+    "entries": [
+      { "period": ["2024", "2025"], "company": "AML Academy", "role": "Production Engineer", "summary": "Built and operated national-scale testing infrastructure through peak exam windows.", "metrics": ["National-scale exam platform", "Peak-traffic exam windows", "Java · Spring Boot · PostgreSQL"], "status": "SCALED" },
+      { "period": ["2025", "2025"], "company": "Rocky Rocks", "role": "AI Platform Engineer", "summary": "Designed retrieval and semantic matching systems that turn unstructured intent into ranked jobs.", "metrics": ["RAG retrieval pipeline", "Vector search", "AI job matching"], "status": "SHIPPED" },
+      { "period": ["2025", "PRESENT"], "company": "Zanger", "role": "Production Engineer", "summary": "Own the path from deployment to incident response across Linux production infrastructure.", "metrics": ["Deployments", "Linux infrastructure", "Security incident response"], "status": "HARDENED" }
+    ],
+    "educationLabel": "EDUCATION",
+    "education": { "school": "Astana IT University", "degree": "Bachelor of Software Engineering", "period": "2022 — 2025" }
+  },
+  "projects": {
+    "eyebrow": "03 / Production systems",
+    "title": "Selected deployments.",
+    "copy": "Three systems, viewed through the problem that existed, the engineering that solved it, and why it mattered.",
+    "openLabel": "OPEN SYSTEM",
+    "list": [
+      { "num": "SYS_001", "title": "National Testing Platform", "subtitle": "Kept national exams online for millions of candidates", "href": "/projects/national-testing-platform", "stat": "3.5M+", "unit": "users · reliability at exam scale", "stack": ["Java", "Spring Boot", "PostgreSQL", "React"], "nodes": ["EDGE", "API", "CORE", "DATA"], "accent": "green" },
+      { "num": "SYS_002", "title": "AI Job Search Platform", "subtitle": "Job matching that understands intent, not keywords", "href": "/projects/ai-job-search", "stat": "RAG", "unit": "semantic matching in production", "stack": ["RAG", "Vector DB", "Embeddings", "AI APIs"], "nodes": ["QUERY", "EMBED", "VECTOR", "AI"], "accent": "indigo" },
+      { "num": "SYS_003", "title": "AI Media Generation", "subtitle": "Slow model calls turned into predictable workflows", "href": "/projects/ai-media-generation", "stat": "ASYNC", "unit": "durable, queue-based generation", "stack": ["Next.js", "PostgreSQL", "AI APIs"], "nodes": ["UI", "JOBS", "MODEL", "STORE"], "accent": "white" }
+    ]
+  },
+  "evidence": {
+    "eyebrow": "04 / Evidence",
+    "title": "Open source & private systems.",
+    "copy": "What can be shown is public; what ships for clients stays private — and gets documented as case studies.",
+    "oss": { "label": "OPEN SOURCE", "title": "GitHub — nbmDaka", "text": "Public repositories, experiments, and engineering notes.", "cta": "Open GitHub", "href": "https://github.com/nbmDaka" },
+    "private": { "label": "PRIVATE", "title": "Production systems (private repositories)", "text": "Client and company code stays closed. Architecture, constraints, and engineering decisions are documented in the case studies.", "cta": "Read case studies", "href": "#projects" }
+  },
+  "lab": {
+    "eyebrow": "05 / Architecture lab",
+    "title": "Inspect the system.",
+    "copy": "A service map is only useful when it explains behavior. Rotate the topology and select a node — by pointer or keyboard — to inspect its responsibility.",
+    "legend": ["CORE RUNTIME", "AI LAYER", "INFRASTRUCTURE"]
+  },
+  "logs": {
+    "eyebrow": "06 / Engineering logs",
+    "title": "Operational record.",
+    "indexed": "ENTRIES INDEXED"
+  },
+  "principles": {
+    "eyebrow": "07 / Engineering principles",
+    "title": "How I build.",
+    "copy": "Not motivational quotes — operating rules derived from running production systems under real load.",
+    "list": [
+      { "id": "01", "title": "Reliability before optimization", "detail": "A system that recovers predictably beats a fast system that fails silently. Correctness, idempotent writes, and explicit failure modes come first — speed follows." },
+      { "id": "02", "title": "Simple architecture that scales", "detail": "Stateless services, one source of truth, horizontal scaling. Complexity must earn its place: every added component is a component that can fail at 3AM." },
+      { "id": "03", "title": "Production is the only real benchmark", "detail": "Capacity is proven with load tests before traffic arrives, and behavior is measured with metrics, logs, and alerts — not assumed from benchmarks." },
+      { "id": "04", "title": "Own the full lifecycle", "detail": "From schema design to deployment to incident response. A system is not done when it ships — it is done when it can be operated calmly." }
+    ]
+  },
+  "contact": {
+    "eyebrow": "08 / Connection channel",
+    "prompt": "connect",
+    "titleA": "Build something",
+    "titleB": "that has to work.",
+    "sub": "Available for ambitious backend, platform, and AI infrastructure work.",
+    "resumeLabel": "Resume",
+    "resumeValue": "Download PDF",
+    "footerA": "NURDAULET BEKETOV",
+    "footerB": "ASTANA, KAZAKHSTAN · UTC+5",
+    "footerC": "AVAILABLE FOR CONNECTION"
+  },
+  "stack": {
+    "eyebrow": "Stack / Runtime manifest",
+    "titleA": "Tools with",
+    "titleB": "production scars.",
+    "cmd": "cat stack.yml",
+    "loaded": "modules loaded",
+    "usedFor": "Used for",
+    "criteria": "SELECTION CRITERIA",
+    "principles": ["Boring technology on critical paths", "Sharp tools where they compound", "Every choice survives an incident review"],
+    "tiers": {
+      "production": { "label": "PRODUCTION EXPERIENCE", "note": "Technologies used on shipped, operated systems." },
+      "working": { "label": "WORKING KNOWLEDGE", "note": "Explored through projects and practice — not yet battle-tested at scale." }
+    },
+    "categories": [
+      {
+        "id": "MOD_01", "name": "Backend Runtime", "note": "Services that hold under load.", "ai": false,
+        "tech": [
+          { "name": "Java", "context": "Large enterprise systems that must stay maintainable for years", "tier": "production" },
+          { "name": "Spring Boot", "context": "Production microservices with a mature operational ecosystem", "tier": "production" },
+          { "name": "Go", "context": "High-performance backend services and concurrent workloads", "tier": "production" },
+          { "name": "Kafka", "context": "Event-driven architecture — async, decoupled communication", "tier": "working" },
+          { "name": "gRPC", "context": "Typed, low-overhead contracts between internal services", "tier": "working" },
+          { "name": "NestJS", "context": "Structured Node.js services with typed boundaries", "tier": "working" }
+        ]
+      },
+      {
+        "id": "MOD_02", "name": "Infrastructure", "note": "Boring where it should be, sharp where it matters.", "ai": false,
+        "tech": [
+          { "name": "Linux", "context": "Running and hardening production servers; incident response", "tier": "production" },
+          { "name": "Docker", "context": "Reproducible builds and predictable deployments", "tier": "production" },
+          { "name": "Nginx", "context": "Edge routing, TLS termination, load distribution", "tier": "production" }
+        ]
+      },
+      {
+        "id": "MOD_03", "name": "Data Systems", "note": "The source of truth stays truthful.", "ai": false,
+        "tech": [
+          { "name": "PostgreSQL", "context": "Reliable relational storage; query optimization on high-load paths", "tier": "production" },
+          { "name": "Vector DB", "context": "Embedding storage and fast semantic similarity search", "tier": "production" },
+          { "name": "MySQL", "context": "Service-owned schemas and integration with existing systems", "tier": "working" }
+        ]
+      },
+      {
+        "id": "MOD_04", "name": "AI Systems", "note": "Intelligence as infrastructure, not decoration.", "ai": true,
+        "tech": [
+          { "name": "RAG", "context": "Grounding model output in retrieved, verifiable data", "tier": "production" },
+          { "name": "Embeddings", "context": "Turning unstructured text into searchable semantic representations", "tier": "production" },
+          { "name": "AI APIs", "context": "Model integration with explicit cost and latency budgets", "tier": "production" }
+        ]
+      }
+    ]
+  },
+  "palette": {
+    "placeholder": "Type a command…",
+    "label": "AVAILABLE COMMANDS",
+    "empty": "No matching command.",
+    "commands": [
+      { "label": "Engineering profile", "hint": "whoami", "href": "#profile", "icon": "user" },
+      { "label": "Experience timeline", "hint": "history", "href": "#experience", "icon": "briefcase" },
+      { "label": "Production systems", "hint": "ls /systems", "href": "#projects", "icon": "layers" },
+      { "label": "Architecture lab", "hint": "inspect --graph", "href": "#lab", "icon": "cpu" },
+      { "label": "Technology stack", "hint": "cat stack.yml", "href": "/stack", "icon": "cpu" },
+      { "label": "Download resume", "hint": "download resume", "href": "/resume.pdf", "icon": "download" },
+      { "label": "Open connection channel", "hint": "connect", "href": "#contact", "icon": "mail" }
+    ]
+  }
+}

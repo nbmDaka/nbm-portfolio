@@ -1,24 +1,31 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, BriefcaseBusiness, Compass, Cpu, Layers3, Mail, UserRound } from 'lucide-react';
+import { ArrowUpRight, BriefcaseBusiness, Compass, Cpu, Download, Layers3, Mail, UserRound } from 'lucide-react';
 
-type Command = {
+export interface PaletteCommand {
   label: string;
   hint: string;
   href: string;
-  icon: React.ComponentType<{ size?: number }>;
+  icon: string;
+}
+
+interface Props {
+  commands: PaletteCommand[];
+  placeholder: string;
+  label: string;
+  empty: string;
+}
+
+const icons: Record<string, React.ComponentType<{ size?: number }>> = {
+  user: UserRound,
+  briefcase: BriefcaseBusiness,
+  layers: Layers3,
+  cpu: Cpu,
+  compass: Compass,
+  mail: Mail,
+  download: Download,
 };
 
-const commands: Command[] = [
-  { label: 'Engineering profile', hint: 'whoami', href: '/#profile', icon: UserRound },
-  { label: 'Experience timeline', hint: 'history', href: '/#experience', icon: BriefcaseBusiness },
-  { label: 'Production systems', hint: 'ls /systems', href: '/#projects', icon: Layers3 },
-  { label: 'Architecture lab', hint: 'inspect --graph', href: '/#lab', icon: Cpu },
-  { label: 'Engineering principles', hint: 'principles', href: '/#principles', icon: Compass },
-  { label: 'Technology stack', hint: 'cat stack.yml', href: '/stack', icon: Cpu },
-  { label: 'Open connection channel', hint: 'connect', href: '/#contact', icon: Mail },
-];
-
-export default function CommandPalette() {
+export default function CommandPalette({ commands, placeholder, label, empty }: Props) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [active, setActive] = useState(0);
@@ -29,7 +36,7 @@ export default function CommandPalette() {
     const normalized = query.toLowerCase().trim();
     if (!normalized) return commands;
     return commands.filter((item) => `${item.label} ${item.hint}`.toLowerCase().includes(normalized));
-  }, [query]);
+  }, [query, commands]);
 
   useEffect(() => {
     const keydown = (event: KeyboardEvent) => {
@@ -79,13 +86,13 @@ export default function CommandPalette() {
       <section className="palette" role="dialog" aria-modal="true" aria-label="Command palette" onMouseDown={(e) => e.stopPropagation()}>
         <div className="palette-input-wrap">
           <span className="prompt">›</span>
-          <input ref={input} value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={onKeyDown} placeholder="Type a command…" aria-label="Search commands" />
+          <input ref={input} value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={onKeyDown} placeholder={placeholder} aria-label="Search commands" />
           <kbd>ESC</kbd>
         </div>
-        <div className="palette-label">AVAILABLE COMMANDS</div>
+        <div className="palette-label">{label}</div>
         <div className="palette-results">
           {results.map((item, index) => {
-            const Icon = item.icon;
+            const Icon = icons[item.icon] ?? Compass;
             return (
               <a className={index === active ? 'active' : ''} href={item.href} key={item.href} onMouseEnter={() => setActive(index)}>
                 <Icon size={15} />
@@ -95,7 +102,7 @@ export default function CommandPalette() {
               </a>
             );
           })}
-          {!results.length && <p className="empty">No matching command.</p>}
+          {!results.length && <p className="empty">{empty}</p>}
         </div>
         <footer><span>↑↓ navigate</span><span>↵ open</span><span>⌘K toggle</span></footer>
       </section>

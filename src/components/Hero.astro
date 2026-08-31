@@ -1,6 +1,9 @@
 ---
 import TerminalConsole from './react/TerminalConsole';
 import SystemNetwork from './react/SystemNetwork';
+import { useTranslations } from '../i18n/ui';
+
+const t = useTranslations(Astro.currentLocale).hero;
 ---
 
 <section class="hero" aria-labelledby="hero-title">
@@ -9,13 +12,16 @@ import SystemNetwork from './react/SystemNetwork';
   <div class="hero-inner page-shell">
     <div class="hero-copy">
       <div class="system-status"><i></i><span>SYSTEM ONLINE</span><b>UTC+5 / ASTANA</b></div>
-      <p class="hero-name">Nurdaulet Beketov</p>
-      <h1 id="hero-title">Backend engineer building <span>high-scale systems &amp; AI products.</span></h1>
-      <p class="hero-stack">Go<b>·</b>Java<b>·</b>Distributed Systems<b>·</b>AI Infrastructure</p>
-      <p class="hero-sub">Production backends for national-scale testing, semantic job search, and AI media generation.</p>
+      <div class="hero-identity">
+        <img class="hero-portrait" src="/portrait.jpg" alt={t.portraitAlt} width="52" height="52" />
+        <p class="hero-name">{t.name}</p>
+      </div>
+      <h1 id="hero-title">{t.titleA} <span>{t.titleB}</span></h1>
+      <p class="hero-stack">{t.stack.map((item, index) => <>{index > 0 && <b>·</b>}{item}</>)}</p>
+      <p class="hero-sub">{t.sub}</p>
       <div class="hero-actions">
-        <a class="primary-action" href="#impact">See impact <span>↘</span></a>
-        <button class="hairline-button" type="button" data-open-command>Open console <kbd>⌘K</kbd></button>
+        <a class="primary-action" href="#impact">{t.cta} <span>↘</span></a>
+        <button class="hairline-button" type="button" data-open-command>{t.console} <kbd>⌘K</kbd></button>
       </div>
     </div>
     <div class="visual" aria-label="Animated backend system topology">
@@ -23,7 +29,7 @@ import SystemNetwork from './react/SystemNetwork';
     </div>
     <div class="console"><TerminalConsole client:visible /></div>
     <div class="hero-index" aria-hidden="true">
-      <span>PORTFOLIO / {new Date().getFullYear()}</span><span>SCROLL TO INSPECT</span><i></i>
+      <span>PORTFOLIO / {new Date().getFullYear()}</span><span>{t.indexB}</span><i></i>
     </div>
   </div>
 </section>
@@ -37,10 +43,11 @@ import SystemNetwork from './react/SystemNetwork';
   .system-status { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.6rem; color: #00ff88; font: 500 .6rem/1 'JetBrains Mono', monospace; letter-spacing: .11em; }
   .system-status i { width: .42rem; height: .42rem; border-radius: 50%; background: #00ff88; box-shadow: 0 0 14px rgba(0,255,136,.6); }
   .system-status b { margin-left: .4rem; color: #3f3f46; font-weight: 400; }
+  .hero-identity { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .hero-portrait { width: 3.25rem; height: 3.25rem; border: 1px solid var(--line-strong); border-radius: .45rem; object-fit: cover; object-position: center 22%; background: #0a0a0b; }
+  .hero-name { margin: 0; color: #fff; font: 500 .85rem/1 'JetBrains Mono', monospace; letter-spacing: .22em; text-transform: uppercase; }
   h1 { max-width: 20ch; margin: 0; font-family: 'Geist Variable', sans-serif; font-size: clamp(3.4rem, 7.2vw, 7.5rem); font-weight: 520; letter-spacing: -.055em; line-height: .95; }
   h1 span { color: #71717a; }
-  .hero-name { display: flex; align-items: center; gap: .7rem; margin: 0 0 1.5rem; color: #fff; font: 500 .85rem/1 'JetBrains Mono', monospace; letter-spacing: .22em; text-transform: uppercase; }
-  .hero-name::before { content: ""; width: .55rem; height: .55rem; background: #00ff88; }
   .hero-stack { margin: 1.7rem 0 0; color: #d4d4d8; font: 500 .8rem/1.6 'JetBrains Mono', monospace; letter-spacing: .04em; }
   .hero-stack b { margin-inline: .65rem; color: #00ff88; font-weight: 400; }
   .hero-sub { max-width: 590px; margin: 1.1rem 0 0; color: #a1a1aa; font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.7; }
@@ -56,16 +63,17 @@ import SystemNetwork from './react/SystemNetwork';
   @media (max-width: 900px) {
     .hero-inner { grid-template-columns: 1fr; padding-top: 5rem; }
     .hero-copy { align-self: start; }
-    .visual { position: absolute; z-index: 0; top: 20rem; right: -12rem; width: 40rem; opacity: .52; }
+    .visual { position: absolute; z-index: 0; top: 22rem; right: -12rem; width: 40rem; opacity: .52; }
     .console { position: relative; z-index: 1; grid-column: 1; width: 100%; margin-top: 6rem; }
     .hero-index { grid-column: 1; }
   }
   @media (max-width: 520px) {
     .hero-inner { padding-top: 4.5rem; }
     h1 { font-size: clamp(3rem, 13vw, 4.6rem); max-width: none; }
-    .visual { top: 21rem; right: -15rem; opacity: .42; }
+    .visual { top: 23rem; right: -15rem; opacity: .42; }
     .console { margin-top: 5rem; }
     .system-status b { display: none; }
     .hero-index span:nth-child(2) { display: none; }
+    .hero-name { font-size: .72rem; letter-spacing: .16em; }
   }
 </style>

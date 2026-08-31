@@ -30,7 +30,7 @@ The platform needed **semantic retrieval**: match meaning, not tokens, and retur
 
 ## What was built
 
-The system is a **RAG pipeline** built as a production service, not a demo. Candidate queries and job documents are normalized and embedded into a shared vector space. The **vector database** performs approximate nearest-neighbor retrieval to produce candidate matches; a downstream AI ranking stage assembles context and re-ranks for final recommendations. The retrieval path — embed, query, re-rank — was kept inside an interactive latency budget. [VERIFY METRIC: p95 search latency]
+The system is a **RAG pipeline** built as a production service, not a demo. Candidate queries and job documents are normalized and embedded into a shared vector space. The **vector database** performs approximate nearest-neighbor retrieval to produce candidate matches; a downstream AI ranking stage assembles context and re-ranks for final recommendations. The retrieval path — embed, query, re-rank — was kept inside an interactive latency budget.
 
 Freshness is designed in: new or updated job postings flow through the embedding pipeline continuously, so the index reflects the live market rather than a nightly snapshot.
 
@@ -50,7 +50,7 @@ Interactive search has a hard latency budget. Embedding generation, vector query
 
 ### Evaluation loop
 
-"Relevant" is meaningless without measurement. Relevance was tracked against a versioned evaluation set with graded relevance judgments, and pipeline changes shipped only when measured relevance improved. [VERIFY METRIC: NDCG@k delta vs keyword baseline]
+"Relevant" is meaningless without measurement. Relevance was tracked against a versioned evaluation set with graded relevance judgments, and pipeline changes shipped only when measured relevance improved.
 
 ## Challenges
 
@@ -64,5 +64,5 @@ Interactive search has a hard latency budget. Embedding generation, vector query
 
 - Semantic search replaced keyword matching across the live job catalog
 - **RAG pipeline** in production: continuous embedding, vector search, AI re-ranking
-- Relevance improved against a versioned evaluation set [VERIFY METRIC: NDCG@k delta]
-- Retrieval path held an interactive latency budget [VERIFY METRIC: p95 search latency]
+- Relevance improved against a versioned evaluation set
+- Retrieval path held an interactive latency budget

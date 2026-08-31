@@ -1,24 +1,15 @@
 import { motion } from 'framer-motion';
 
-const entries = [
-  {
-    period: ['2024', '2025'], company: 'AML Academy', role: 'Production Engineer',
-    summary: 'Built and operated national-scale testing infrastructure through peak exam windows.',
-    metrics: ['3.5M+ registered users', '40K–50K peak concurrent users', 'Java / Spring Boot'], status: 'SCALED',
-  },
-  {
-    period: ['2025', '2025'], company: 'Rocky Rocks', role: 'AI Platform Engineer',
-    summary: 'Designed retrieval and semantic matching systems that turn unstructured intent into ranked jobs.',
-    metrics: ['RAG retrieval pipeline', 'Vector search', 'AI job matching'], status: 'SHIPPED',
-  },
-  {
-    period: ['2025', 'PRESENT'], company: 'Zanger', role: 'Production Engineer',
-    summary: 'Own the path from deployment to incident response across Linux production infrastructure.',
-    metrics: ['Deployments', 'Linux infrastructure', 'Security incident response'], status: 'HARDENED',
-  },
-];
+export interface TimelineEntry {
+  period: string[];
+  company: string;
+  role: string;
+  summary: string;
+  metrics: string[];
+  status: string;
+}
 
-export default function ExperienceTimeline() {
+export default function ExperienceTimeline({ entries }: { entries: TimelineEntry[] }) {
   return (
     <div className="timeline">
       <div className="rail" aria-hidden="true" />

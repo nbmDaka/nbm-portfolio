@@ -62,6 +62,6 @@ Every job carries a real cost. Concurrency limits, per-user quotas, and attempt 
 
 - Generation throughput decoupled from request latency via the **async job engine**
 - Durable job state survives worker failure — crashed jobs are retried automatically
-- Queue wait stays predictable at normal load; bursts absorbed by scaling workers [VERIFY METRIC: p95 queue wait]
+- Queue wait stays predictable at normal load; bursts absorbed by scaling workers
 - Provider failures isolated and absorbed without user-facing outages
 - Cost per generation observable and capped at the queue layer

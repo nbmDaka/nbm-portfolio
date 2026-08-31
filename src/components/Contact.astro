@@ -1,22 +1,28 @@
 ---
+import { useTranslations } from '../i18n/ui';
+
+const t = useTranslations(Astro.currentLocale).contact;
+
 const links = [
   { label: 'Email', value: 'nurdaulet.beketov.2005@gmail.com', href: 'mailto:nurdaulet.beketov.2005@gmail.com' },
   { label: 'GitHub', value: 'github.com/nbmDaka', href: 'https://github.com/nbmDaka' },
+  { label: 'Telegram', value: 't.me/nbmdake', href: 'https://t.me/nbmdake' },
   { label: 'LinkedIn', value: 'linkedin.com/in/nurdaulet-beketov', href: 'https://www.linkedin.com/in/nurdaulet-beketov' },
+  { label: t.resumeLabel, value: t.resumeValue, href: '/resume.pdf', download: true },
 ];
 ---
 
 <section class="contact" id="contact" aria-labelledby="contact-title">
   <div class="contact-grid grid-field" aria-hidden="true"></div>
   <div class="section-shell contact-inner">
-    <p class="eyebrow">07 / Connection channel</p>
-    <div class="prompt"><span>›</span> connect<span class="cursor"></span></div>
-    <h2 id="contact-title">Build something<br />that has to work.</h2>
-    <p>Available for ambitious backend, platform, and AI infrastructure work.</p>
+    <p class="eyebrow">{t.eyebrow}</p>
+    <div class="prompt"><span>›</span> {t.prompt}<span class="cursor"></span></div>
+    <h2 id="contact-title">{t.titleA}<br />{t.titleB}</h2>
+    <p>{t.sub}</p>
     <div class="contact-links">
-      {links.map((link) => <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer"><span>{link.label}</span><strong>{link.value}</strong><b>↗</b></a>)}
+      {links.map((link) => <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" download={link.download ? '' : undefined}><span>{link.label}</span><strong>{link.value}</strong><b>{link.download ? '↓' : '↗'}</b></a>)}
     </div>
-    <footer><span>© {new Date().getFullYear()} NURDAULET BEKETOV</span><span>ASTANA, KAZAKHSTAN · UTC+5</span><span class="online"><i></i>AVAILABLE FOR CONNECTION</span></footer>
+    <footer><span>© {new Date().getFullYear()} {t.footerA}</span><span>{t.footerB}</span><span class="online"><i></i>{t.footerC}</span></footer>
   </div>
 </section>
 

@@ -1,0 +1,67 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 2863 >>
+stream
+BT 0.05 0.05 0.05 rg /F2 22 Tf 56 762 Td (NURDAULET BEKETOV) Tj ET
+BT 0 0.72 0.35 rg /F1 11 Tf 56 744 Td (Backend Software Engineer - Distributed Systems / AI Infrastructure) Tj ET
+BT 0.42 0.42 0.45 rg /F1 7.5 Tf 56 730 Td (Astana, Kazakhstan \(UTC+5\)  |  nurdaulet.beketov.2005@gmail.com  |  github.com/nbmDaka  |  t.me/nbmdake  |  linkedin.com/in/nurdaulet-beketov) Tj ET
+0.85 0.85 0.87 RG 0.5 w 56 716 m 556 716 l S
+BT 0 0.72 0.35 rg /F2 10 Tf 56 700 Td (EXPERIENCE) Tj ET
+BT 0.05 0.05 0.05 rg /F2 10.5 Tf 56 682 Td (Zanger - Production Engineer) Tj ET
+BT 0.42 0.42 0.45 rg /F1 8.5 Tf 498 682 Td (2025 - Present) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 668 Td (- Own deployments and incident response across Linux production infrastructure.) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 656 Td (- Handled security incidents; hardened affected layers.) Tj ET
+BT 0.05 0.05 0.05 rg /F2 10.5 Tf 56 634 Td (Rocky Rocks - AI Platform Engineer) Tj ET
+BT 0.42 0.42 0.45 rg /F1 8.5 Tf 526 634 Td (2025) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 620 Td (- Built RAG retrieval pipeline: embedding generation, vector search, AI re-ranking.) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 608 Td (- Shipped semantic job matching to production.) Tj ET
+BT 0.05 0.05 0.05 rg /F2 10.5 Tf 56 586 Td (AML Academy - Production Engineer) Tj ET
+BT 0.42 0.42 0.45 rg /F1 8.5 Tf 506 586 Td (2024 - 2025) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 572 Td (- National testing platform: 3.5M+ registered users, 40K-50K peak concurrent users.) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 560 Td (- Java / Spring Boot services, PostgreSQL, exam-window peak reliability.) Tj ET
+0.85 0.85 0.87 RG 0.5 w 56 542 m 556 542 l S
+BT 0 0.72 0.35 rg /F2 10 Tf 56 524 Td (EDUCATION) Tj ET
+BT 0.05 0.05 0.05 rg /F2 10.5 Tf 56 508 Td (Astana IT University - Bachelor of Software Engineering) Tj ET
+BT 0.42 0.42 0.45 rg /F1 8.5 Tf 506 508 Td (2022 - 2025) Tj ET
+0.85 0.85 0.87 RG 0.5 w 56 492 m 556 492 l S
+BT 0 0.72 0.35 rg /F2 10 Tf 56 474 Td (STACK) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 458 Td (Backend: Go, Java, Spring Boot, NestJS, Kafka, gRPC) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 444 Td (Data: PostgreSQL, MySQL, Vector DB   |   Infrastructure: Docker, Linux, Nginx) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 430 Td (AI: RAG, Embeddings, Vector Search, AI APIs) Tj ET
+0.85 0.85 0.87 RG 0.5 w 56 414 m 556 414 l S
+BT 0 0.72 0.35 rg /F2 10 Tf 56 396 Td (SELECTED SYSTEMS) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 380 Td (- National Testing Platform - national exam delivery at 40K-50K peak concurrency.) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 366 Td (- AI Job Search Platform - RAG pipeline, vector search, AI recommendations.) Tj ET
+BT 0.05 0.05 0.05 rg /F1 9 Tf 56 352 Td (- AI Media Generation Platform - asynchronous, queue-based generation workflows.) Tj ET
+BT 0.42 0.42 0.45 rg /F1 8 Tf 56 320 Td (nurdaulet.dev) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000000321 00000 n 
+0000000396 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3311
+%%EOF

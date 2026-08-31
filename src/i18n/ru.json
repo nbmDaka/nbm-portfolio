@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "title": "Нурдаулет Бекетов — Backend Software Engineer",
+    "description": "Backend-инженер: распределённые системы, Go, Java и AI-инфраструктура.",
+    "stackTitle": "Стек — Нурдаулет Бекетов",
+    "stackDescription": "Технологии production-систем Нурдаулета Бекетова: backend-рантаймы, инфраструктура, данные и AI."
+  },
+  "common": { "skip": "Перейти к содержимому" },
+  "nav": {
+    "profile": "Профиль",
+    "experience": "Опыт",
+    "systems": "Системы",
+    "stack": "Стек",
+    "resume": "Резюме",
+    "homeLabel": "Нурдаулет Бекетов, на главную",
+    "paletteLabel": "Открыть палитру команд"
+  },
+  "hero": {
+    "name": "Нурдаулет Бекетов",
+    "portraitAlt": "Портрет Нурдаулета Бекетова",
+    "titleA": "Backend-инженер, строящий",
+    "titleB": "высоконагруженные системы и AI-продукты.",
+    "stack": ["Go", "Java", "Распределённые системы", "AI-инфраструктура"],
+    "sub": "Production-бэкенды для национальной системы тестирования, семантического поиска работы и AI-генерации медиа.",
+    "cta": "Смотреть impact",
+    "console": "Открыть консоль",
+    "indexB": "ЛИСТАЙТЕ ВНИЗ"
+  },
+  "impact": {
+    "eyebrow": "Impact / Production-опыт",
+    "title": "Масштаб в production",
+    "note": "Масштаб, который этот инженер лично строил и эксплуатировал.",
+    "metrics": [
+      { "value": "3.5M+", "label": "пользователей обслужено", "detail": "Национальная платформа тестирования — от регистрации до сдачи экзамена", "tone": "green" },
+      { "value": "40K–50K", "label": "пиковых одновременных пользователей", "detail": "Экзаменационные окна без потери ответов", "tone": "green" },
+      { "value": "AI", "label": "RAG и векторный поиск", "detail": "Retrieval-пайплайны и семантический подбор вакансий в production", "tone": "indigo" },
+      { "value": "PROD", "label": "высоконагруженные системы", "detail": "Деплои, Linux-инфраструктура и реагирование на инциденты", "tone": "white" }
+    ]
+  },
+  "profile": {
+    "eyebrow": "01 / Профиль инженера",
+    "title": "Бэкенд — это тоже продукт.",
+    "copy": "Я проектирую системы, которые пользователи не видят, но всегда чувствуют: надёжные API, понятные границы сервисов, эффективные пути данных и инфраструктура, которая сохраняет спокойствие под нагрузкой.",
+    "aboutLabel": "ОПЕРАТОР",
+    "about": "Живу в Астане, Казахстан. Работаю на всём жизненном цикле бэкенда — от схемы данных до деплоя и ночных инцидентов. Мне важны системы, которые отказывают предсказуемо, и команды, которые могут ими спокойно управлять.",
+    "aboutMeta": ["Backend Software Engineer", "Астана, Казахстан", "Русский / English"],
+    "footLabel": "ПРИНЦИПЫ ДИЗАЙНА",
+    "foot": ["Наблюдаемость по умолчанию", "Масштаб по доказательствам", "Простота под давлением"],
+    "modules": [
+      { "id": "01", "kind": "Runtime", "title": "Backend Core", "tech": "Go · Java · Spring Boot · NestJS", "detail": "Типизированные сервисы, явные границы, предсказуемые режимы отказа.", "state": "OPERATIONAL", "ai": false },
+      { "id": "02", "kind": "Message System", "title": "Event Architecture", "tech": "Kafka · gRPC · Async workflows", "detail": "Слабая связанность ради пропускной способности и независимого масштабирования.", "state": "OPERATIONAL", "ai": false },
+      { "id": "03", "kind": "Data Layer", "title": "Persistence", "tech": "PostgreSQL · MySQL · Vector DB", "detail": "Дисциплина схем, оптимизация запросов, высоконагруженные пути данных.", "state": "OPTIMIZED", "ai": false },
+      { "id": "04", "kind": "Intelligence", "title": "AI Infrastructure", "tech": "RAG · Embeddings · AI APIs", "detail": "Production-пайплайны retrieval с измеримой релевантностью.", "state": "ONLINE", "ai": true }
+    ]
+  },
+  "experience": {
+    "eyebrow": "02 / История в production",
+    "title": "Системы, а не должности.",
+    "copy": "Таймлайн production-ограничений: национальный трафик, семантический retrieval и инфраструктура, не прощающая двусмысленности.",
+    "entries": [
+      { "period": ["2024", "2025"], "company": "AML Academy", "role": "Production Engineer", "summary": "Строил и эксплуатировал инфраструктуру национального тестирования в пиковые экзаменационные окна.", "metrics": ["Платформа национального масштаба", "Пиковые экзаменационные окна", "Java · Spring Boot · PostgreSQL"], "status": "SCALED" },
+      { "period": ["2025", "2025"], "company": "Rocky Rocks", "role": "AI Platform Engineer", "summary": "Проектировал retrieval и семантический матчинг, превращающие неструктурированный запрос в ранжированные вакансии.", "metrics": ["RAG-пайплайн retrieval", "Векторный поиск", "AI-подбор вакансий"], "status": "SHIPPED" },
+      { "period": ["2025", "PRESENT"], "company": "Zanger", "role": "Production Engineer", "summary": "Отвечаю за путь от деплоя до реагирования на инциденты в production-инфраструктуре на Linux.", "metrics": ["Деплои", "Linux-инфраструктура", "Инциденты безопасности"], "status": "HARDENED" }
+    ],
+    "educationLabel": "ОБРАЗОВАНИЕ",
+    "education": { "school": "Astana IT University", "degree": "Бакалавриат, Software Engineering", "period": "2022 — 2025" }
+  },
+  "projects": {
+    "eyebrow": "03 / Production-системы",
+    "title": "Избранные внедрения.",
+    "copy": "Три системы через призму проблемы, инженерного решения и его значимости.",
+    "openLabel": "OPEN SYSTEM",
+    "list": [
+      { "num": "SYS_001", "title": "National Testing Platform", "subtitle": "Национальные экзамены онлайн для миллионов кандидатов", "href": "/projects/national-testing-platform", "stat": "3.5M+", "unit": "пользователей · надёжность в пик нагрузки", "stack": ["Java", "Spring Boot", "PostgreSQL", "React"], "nodes": ["EDGE", "API", "CORE", "DATA"], "accent": "green" },
+      { "num": "SYS_002", "title": "AI Job Search Platform", "subtitle": "Подбор вакансий по смыслу, а не по ключевым словам", "href": "/projects/ai-job-search", "stat": "RAG", "unit": "семантический матчинг в production", "stack": ["RAG", "Vector DB", "Embeddings", "AI APIs"], "nodes": ["QUERY", "EMBED", "VECTOR", "AI"], "accent": "indigo" },
+      { "num": "SYS_003", "title": "AI Media Generation", "subtitle": "Медленные вызовы моделей — в предсказуемые процессы", "href": "/projects/ai-media-generation", "stat": "ASYNC", "unit": "надёжная генерация через очередь", "stack": ["Next.js", "PostgreSQL", "AI APIs"], "nodes": ["UI", "JOBS", "MODEL", "STORE"], "accent": "white" }
+    ]
+  },
+  "evidence": {
+    "eyebrow": "04 / Доказательства",
+    "title": "Open source и приватные системы.",
+    "copy": "Что можно показать — открыто; что работает у клиентов — закрыто, но задокументировано в кейсах.",
+    "oss": { "label": "OPEN SOURCE", "title": "GitHub — nbmDaka", "text": "Публичные репозитории, эксперименты и инженерные заметки.", "cta": "Открыть GitHub", "href": "https://github.com/nbmDaka" },
+    "private": { "label": "PRIVATE", "title": "Production systems (private repositories)", "text": "Код клиентов и компаний закрыт. Архитектура, ограничения и инженерные решения задокументированы в кейсах.", "cta": "Читать кейсы", "href": "#projects" }
+  },
+  "lab": {
+    "eyebrow": "05 / Architecture lab",
+    "title": "Изучите систему.",
+    "copy": "Карта сервисов полезна только тогда, когда объясняет поведение. Вращайте топологию и выбирайте узел — указателем или клавиатурой — чтобы увидеть его роль.",
+    "legend": ["CORE RUNTIME", "AI LAYER", "INFRASTRUCTURE"]
+  },
+  "logs": {
+    "eyebrow": "06 / Инженерные логи",
+    "title": "Операционная история.",
+    "indexed": "ЗАПИСЕЙ В ИНДЕКСЕ"
+  },
+  "principles": {
+    "eyebrow": "07 / Принципы инженерии",
+    "title": "Как я работаю.",
+    "copy": "Не мотивационные цитаты — рабочие правила, выведенные из эксплуатации production-систем под реальной нагрузкой.",
+    "list": [
+      { "id": "01", "title": "Надёжность раньше оптимизации", "detail": "Система, которая предсказуемо восстанавливается, ценнее быстрой системы, которая падает молча. Сначала корректность, идемпотентность и явные режимы отказа — скорость после." },
+      { "id": "02", "title": "Простая архитектура, которая масштабируется", "detail": "Stateless-сервисы, один источник истины, горизонтальное масштабирование. Сложность должна себя оправдывать: каждый новый компонент — это компонент, который упадёт в 3 часа ночи." },
+      { "id": "03", "title": "Production — единственный честный бенчмарк", "detail": "Ёмкость доказывается нагрузочными тестами до прихода трафика, а поведение измеряется метриками, логами и алертами — не предположениями." },
+      { "id": "04", "title": "Владение всем жизненным циклом", "detail": "От схемы данных до деплоя и реагирования на инциденты. Система готова не когда задеплоена, а когда ею можно спокойно управлять." }
+    ]
+  },
+  "contact": {
+    "eyebrow": "08 / Канал связи",
+    "prompt": "connect",
+    "titleA": "Создадим что-то,",
+    "titleB": "что обязано работать.",
+    "sub": "Открыт к амбициозным backend-, platform- и AI-инфраструктурным проектам.",
+    "resumeLabel": "Резюме",
+    "resumeValue": "Скачать PDF",
+    "footerA": "NURDAULET BEKETOV",
+    "footerB": "АСТАНА, КАЗАХСТАН · UTC+5",
+    "footerC": "ОТКРЫТ К СВЯЗИ"
+  },
+  "stack": {
+    "eyebrow": "Стек / Runtime manifest",
+    "titleA": "Инструменты,",
+    "titleB": "проверенные нагрузкой.",
+    "cmd": "cat stack.yml",
+    "loaded": "модулей загружено",
+    "usedFor": "Используется для",
+    "criteria": "КРИТЕРИИ ВЫБОРА",
+    "principles": ["Скучные технологии на критических путях", "Острые инструменты — где они умножают", "Каждый выбор переживает разбор инцидента"],
+    "tiers": {
+      "production": { "label": "PRODUCTION EXPERIENCE", "note": "Технологии, использованные в запущенных и эксплуатируемых системах." },
+      "working": { "label": "WORKING KNOWLEDGE", "note": "Изучены через проекты и практику — пока без production-масштаба." }
+    },
+    "categories": [
+      {
+        "id": "MOD_01", "name": "Backend Runtime", "note": "Сервисы, которые держат нагрузку.", "ai": false,
+        "tech": [
+          { "name": "Java", "context": "Крупные enterprise-системы, которые поддерживают годами", "tier": "production" },
+          { "name": "Spring Boot", "context": "Production-микросервисы со зрелой операционной экосистемой", "tier": "production" },
+          { "name": "Go", "context": "Высокопроизводительные сервисы и конкурентные нагрузки", "tier": "production" },
+          { "name": "Kafka", "context": "Event-driven архитектура — асинхронная связь между сервисами", "tier": "working" },
+          { "name": "gRPC", "context": "Типизированные контракты между внутренними сервисами", "tier": "working" },
+          { "name": "NestJS", "context": "Структурированные Node.js-сервисы с типизированными границами", "tier": "working" }
+        ]
+      },
+      {
+        "id": "MOD_02", "name": "Инфраструктура", "note": "Скучно там, где нужно, и точно там, где важно.", "ai": false,
+        "tech": [
+          { "name": "Linux", "context": "Эксплуатация и hardening production-серверов; инциденты", "tier": "production" },
+          { "name": "Docker", "context": "Воспроизводимые сборки и предсказуемые деплои", "tier": "production" },
+          { "name": "Nginx", "context": "Edge-маршрутизация, TLS-терминация, распределение нагрузки", "tier": "production" }
+        ]
+      },
+      {
+        "id": "MOD_03", "name": "Данные", "note": "Источник истины остаётся истиной.", "ai": false,
+        "tech": [
+          { "name": "PostgreSQL", "context": "Надёжное реляционное хранилище; оптимизация запросов под нагрузкой", "tier": "production" },
+          { "name": "Vector DB", "context": "Хранение эмбеддингов и быстрый семантический поиск", "tier": "production" },
+          { "name": "MySQL", "context": "Схемы отдельных сервисов и интеграция с существующими системами", "tier": "working" }
+        ]
+      },
+      {
+        "id": "MOD_04", "name": "AI Systems", "note": "Интеллект как инфраструктура, а не украшение.", "ai": true,
+        "tech": [
+          { "name": "RAG", "context": "Привязка ответов модели к извлечённым, проверяемым данным", "tier": "production" },
+          { "name": "Embeddings", "context": "Превращение неструктурированного текста в семантический индекс", "tier": "production" },
+          { "name": "AI APIs", "context": "Интеграция моделей с явными бюджетами стоимости и задержки", "tier": "production" }
+        ]
+      }
+    ]
+  },
+  "palette": {
+    "placeholder": "Введите команду…",
+    "label": "ДОСТУПНЫЕ КОМАНДЫ",
+    "empty": "Команда не найдена.",
+    "commands": [
+      { "label": "Профиль инженера", "hint": "whoami", "href": "#profile", "icon": "user" },
+      { "label": "Опыт работы", "hint": "history", "href": "#experience", "icon": "briefcase" },
+      { "label": "Production-системы", "hint": "ls /systems", "href": "#projects", "icon": "layers" },
+      { "label": "Architecture lab", "hint": "inspect --graph", "href": "#lab", "icon": "cpu" },
+      { "label": "Стек технологий", "hint": "cat stack.yml", "href": "/stack", "icon": "cpu" },
+      { "label": "Скачать резюме", "hint": "download resume", "href": "/resume.pdf", "icon": "download" },
+      { "label": "Канал связи", "hint": "connect", "href": "#contact", "icon": "mail" }
+    ]
+  }
+}
