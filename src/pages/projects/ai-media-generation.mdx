@@ -7,7 +7,7 @@ period: 2025
 role: Platform Engineer
 scope: job engine / provider integration / cost controls
 metric: ASYNC
-metricLabel: zero lost jobs · durable state in PostgreSQL
+metricLabel: durable, queue-based generation workflows
 stack:
   - Next.js
   - AI APIs
@@ -26,7 +26,7 @@ AI media generation breaks the request-response model. A generation call can tak
 
 The platform needed to make an inherently slow, unreliable, expensive operation feel **predictable**: submit a request, track it honestly, deliver the result, and never lose a job the user paid for.
 
-## Architecture
+## What was built
 
 The **Next.js** frontend never talks to a model directly. Generation requests become **durable jobs** persisted in **PostgreSQL** with an explicit state machine: queued, running, succeeded, failed, retried. Workers pull jobs, call the AI model APIs, and write results to storage; the client follows progress through polling or completion callbacks.
 
@@ -58,10 +58,10 @@ Every job carries a real cost. Concurrency limits, per-user quotas, and attempt 
 
 **Timeout classification.** A slow success and a hung request look identical until a deadline policy distinguishes them. Timeouts were set from observed latency distributions, then enforced uniformly.
 
-## Results
+## Impact
 
 - Generation throughput decoupled from request latency via the **async job engine**
-- **Zero lost jobs** — durable state survives worker failure; crashed workers re-queue automatically
-- **p95 queue wait under 5s** at normal load; bursts absorbed by scaling workers
+- Durable job state survives worker failure — crashed jobs are retried automatically
+- Queue wait stays predictable at normal load; bursts absorbed by scaling workers [VERIFY METRIC: p95 queue wait]
 - Provider failures isolated and absorbed without user-facing outages
 - Cost per generation observable and capped at the queue layer

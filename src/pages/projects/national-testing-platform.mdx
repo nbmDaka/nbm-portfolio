@@ -7,12 +7,11 @@ period: 2024 / AML ACADEMY
 role: Production Engineer
 scope: architecture / implementation / load testing / operations
 metric: 3.5M+
-metricLabel: registered users · 45K peak concurrent sessions
+metricLabel: registered users · 40K–50K peak concurrent
 stack:
   - Java
   - Spring Boot
   - PostgreSQL
-  - Kafka
   - React
 flow:
   - CLIENT
@@ -24,17 +23,15 @@ accent: green
 
 ## Problem
 
-A national testing platform does not have average traffic — it has exam windows. When a window opens, tens of thousands of candidates arrive at once, answer against a server-enforced timer, and submit within the same few minutes. The system had to serve **3.5M+ registered users** and hold **45,000 concurrent exam sessions** — measured as open sessions at the gateway, roughly 12K answer writes per minute at peak — without losing a single answer.
+A national testing platform does not have average traffic — it has exam windows. When a window opens, tens of thousands of candidates arrive at once, answer against a server-enforced timer, and submit within the same few minutes. The system had to serve **3.5M+ registered users** and hold **40,000–50,000 concurrent users** at peak without losing answers.
 
 The failure modes were unforgiving: connection storms at window start, write contention on answer persistence, and clock skew between client and server during timed sessions. A dropped submission is not a UX bug here — it is a candidate's result.
 
-## Architecture
+## What was built
 
 Stateless **Spring Boot** services sit behind an API gateway, scaled horizontally so capacity is a function of instance count, not heroics. **PostgreSQL** is the single source of truth; read-heavy paths (test definitions, sessions, results) are cached with explicit invalidation so the database only sees traffic that genuinely belongs to it.
 
-Answer persistence is write-optimized: submissions flow through idempotent endpoints, so a retry under pressure is safe by construction rather than by luck.
-
-Assessment events — submissions, scoring, exports — are published to **Kafka**; analytics and result processing consume them off the request path, so reporting never competes with live exam writes.
+Answer persistence is write-optimized: submissions flow through retry-safe endpoints, so a retry under pressure is safe by construction rather than by luck.
 
 ## Engineering decisions
 
@@ -44,7 +41,7 @@ Every answer write carries a client-generated idempotency key. Network retries, 
 
 ### Connection pool discipline
 
-Pool sizes were derived from PostgreSQL's `max_connections` budget across all service replicas — 12 replicas × 25 connections against a budget of 400, with headroom reserved for migrations and admin sessions — not tuned by feel. Under load testing, this removed the connection-exhaustion cliff that typically appears exactly at window start.
+Pool sizes were derived from PostgreSQL's `max_connections` budget across all service replicas, with headroom reserved for migrations and admin sessions — not tuned by feel. Under load testing, this removed the connection-exhaustion cliff that typically appears exactly at window start.
 
 ### Server-authoritative timing
 
@@ -62,10 +59,10 @@ Peak-shaped traffic was replayed against staging before each national window. Bo
 
 **Query regression under growth.** As the dataset crossed into the millions of rows, previously cheap queries turned expensive. Indexes were re-derived from actual `EXPLAIN` plans rather than assumptions, and slow paths were eliminated before exam season.
 
-## Results
+## Impact
 
 - **3.5M+** registered users served on a single national platform
-- **45K** peak concurrent sessions held through exam windows, with p99 read latency under **250ms**
-- **99.9%** availability across the exam season
-- Exam windows completed with **zero lost submissions** on the critical write path
+- **40K–50K** peak concurrent users held through exam windows [VERIFY METRIC: peak p99 latency]
+- Platform stayed available through every exam window [VERIFY METRIC: exam-season availability]
+- Submission integrity preserved on the critical write path — retries resolve to one persisted state
 - Capacity added by adding instances — no redesign under pressure

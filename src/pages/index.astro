@@ -1,16 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import ImpactMetrics from '../components/ImpactMetrics.astro';
 import Profile from '../components/Profile.astro';
 import ExperienceTimeline from '../components/react/ExperienceTimeline';
 import Projects from '../components/Projects.astro';
 import ArchitectureLab from '../components/ArchitectureLab.astro';
 import EngineeringLogs from '../components/EngineeringLogs.astro';
+import EngineeringPrinciples from '../components/EngineeringPrinciples.astro';
 import Contact from '../components/Contact.astro';
 ---
 
 <BaseLayout>
   <Hero />
+  <ImpactMetrics />
   <Profile />
   <section class="section-shell experience" id="experience" aria-labelledby="experience-title">
     <div class="experience-head">
@@ -22,6 +25,7 @@ import Contact from '../components/Contact.astro';
   <Projects />
   <ArchitectureLab />
   <EngineeringLogs />
+  <EngineeringPrinciples />
   <Contact />
 </BaseLayout>
 

@@ -5,15 +5,13 @@ description: A RAG retrieval pipeline that converts unstructured candidate inten
 system: SYS_002
 period: 2025 / ROCKY ROCKS
 role: AI Platform Engineer
-scope: pipeline design / evaluation / serving layer
+scope: pipeline design / evaluation / deployment
 metric: RAG
-metricLabel: NDCG@10 +0.18 over keyword baseline · p95 < 400ms
+metricLabel: semantic job matching in production
 stack:
   - RAG
   - Vector DB
   - Embeddings
-  - Go
-  - gRPC
   - AI APIs
 flow:
   - USER QUERY
@@ -30,11 +28,9 @@ Keyword search fails at exactly the moment job search matters most. A candidate 
 
 The platform needed **semantic retrieval**: match meaning, not tokens, and return ranked results fast enough to feel like search, not like a batch job.
 
-## Architecture
+## What was built
 
-The system is a **RAG pipeline** built as a production service, not a demo. Candidate queries and job documents are normalized and embedded into a shared vector space. The **vector database** performs approximate nearest-neighbor retrieval to produce candidate matches; a downstream AI ranking stage assembles context and re-ranks for final recommendations.
-
-The serving layer is written in **Go**: a retrieval API exposed over **gRPC**, keeping the synchronous path — embed, query, re-rank — inside a 400ms p95 budget.
+The system is a **RAG pipeline** built as a production service, not a demo. Candidate queries and job documents are normalized and embedded into a shared vector space. The **vector database** performs approximate nearest-neighbor retrieval to produce candidate matches; a downstream AI ranking stage assembles context and re-ranks for final recommendations. The retrieval path — embed, query, re-rank — was kept inside an interactive latency budget. [VERIFY METRIC: p95 search latency]
 
 Freshness is designed in: new or updated job postings flow through the embedding pipeline continuously, so the index reflects the live market rather than a nightly snapshot.
 
@@ -54,7 +50,7 @@ Interactive search has a hard latency budget. Embedding generation, vector query
 
 ### Evaluation loop
 
-"Relevant" is meaningless without measurement. Relevance is measured with graded judgments on a 400-query evaluation set, tracked as **NDCG@10** per release, plus periodic human-eval win-rate checks on the top-5 results. The pipeline shipped when it beat the keyword baseline by **+0.18 NDCG@10**.
+"Relevant" is meaningless without measurement. Relevance was tracked against a versioned evaluation set with graded relevance judgments, and pipeline changes shipped only when measured relevance improved. [VERIFY METRIC: NDCG@k delta vs keyword baseline]
 
 ## Challenges
 
@@ -64,9 +60,9 @@ Interactive search has a hard latency budget. Embedding generation, vector query
 
 **Cold-start relevance.** With little behavioral signal, ranking had to lean on content quality. Structured requirement extraction gave the ranker signal that raw text could not.
 
-## Results
+## Impact
 
-- Semantic search replaced keyword matching across the live job catalog — **+0.18 NDCG@10** over baseline
-- **RAG pipeline** in production with continuous embedding and re-ranking
-- **p95 end-to-end search under 400ms** on the Go serving path
-- Quality tracked per release against a versioned evaluation set, not anecdote
+- Semantic search replaced keyword matching across the live job catalog
+- **RAG pipeline** in production: continuous embedding, vector search, AI re-ranking
+- Relevance improved against a versioned evaluation set [VERIFY METRIC: NDCG@k delta]
+- Retrieval path held an interactive latency budget [VERIFY METRIC: p95 search latency]

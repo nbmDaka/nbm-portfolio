@@ -28,7 +28,7 @@ const { frontmatter } = Astro.props;
       <h1>{frontmatter.title}</h1>
       <p>{frontmatter.description}</p>
       <div class="case-stats">
-        <div><span>PRIMARY OUTCOME</span><strong>{frontmatter.metric}</strong><p>{frontmatter.metricLabel}</p></div>
+        <div><span>IMPACT</span><strong>{frontmatter.metric}</strong><p>{frontmatter.metricLabel}</p></div>
         <div><span>ROLE</span><strong class="small">{frontmatter.role}</strong><p>{frontmatter.scope}</p></div>
         <div><span>TECHNOLOGY</span><ul>{frontmatter.stack.map((item) => <li>{item}</li>)}</ul></div>
       </div>

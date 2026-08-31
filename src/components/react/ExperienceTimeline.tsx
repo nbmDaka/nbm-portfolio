@@ -2,19 +2,19 @@ import { motion } from 'framer-motion';
 
 const entries = [
   {
-    period: ['2024.02', '2025.01'], company: 'AML Academy', role: 'Production Engineer',
+    period: ['2024', '2025'], company: 'AML Academy', role: 'Production Engineer',
     summary: 'Built and operated national-scale testing infrastructure through peak exam windows.',
-    metrics: ['3.5M+ registered users', '45K peak concurrent sessions', 'p99 < 250ms at peak'], status: 'SCALED',
+    metrics: ['3.5M+ registered users', '40K–50K peak concurrent users', 'Java / Spring Boot'], status: 'SCALED',
   },
   {
-    period: ['2025.02', '2025.07'], company: 'Rocky Rocks', role: 'AI Platform Engineer',
+    period: ['2025', '2025'], company: 'Rocky Rocks', role: 'AI Platform Engineer',
     summary: 'Designed retrieval and semantic matching systems that turn unstructured intent into ranked jobs.',
-    metrics: ['RAG pipeline in production', 'NDCG@10 +0.18 vs keyword', 'p95 search < 400ms'], status: 'SHIPPED',
+    metrics: ['RAG retrieval pipeline', 'Vector search', 'AI job matching'], status: 'SHIPPED',
   },
   {
-    period: ['2025.08', 'NOW'], company: 'Zanger', role: 'Production Engineer',
+    period: ['2025', 'PRESENT'], company: 'Zanger', role: 'Production Engineer',
     summary: 'Own the path from deployment to incident response across Linux production infrastructure.',
-    metrics: ['40-min MTTR on ingress outage', 'Zero-downtime deploys', 'Security incident response'], status: 'HARDENED',
+    metrics: ['Deployments', 'Linux infrastructure', 'Security incident response'], status: 'HARDENED',
   },
 ];
 
@@ -24,7 +24,7 @@ export default function ExperienceTimeline() {
       <div className="rail" aria-hidden="true" />
       {entries.map((entry, index) => (
         <motion.article key={`${entry.company}-${entry.period[0]}`} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-12%' }} transition={{ duration: .55, delay: index * .08 }}>
-          <div className="year"><span>{entry.period[0]}</span><span className="to">→ {entry.period[1]}</span><i /></div>
+          <div className="year"><span>{entry.period[0]}</span>{entry.period[0] !== entry.period[1] && <span className="to">→ {entry.period[1]}</span>}<i /></div>
           <div className="entry-main">
             <div className="entry-head"><div><span>{entry.company}</span><h3>{entry.role}</h3></div><code><i />{entry.status}</code></div>
             <p>{entry.summary}</p>

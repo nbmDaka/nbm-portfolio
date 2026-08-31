@@ -1,0 +1,59 @@
+---
+const principles = [
+  {
+    id: '01',
+    title: 'Reliability before optimization',
+    detail: 'A system that recovers predictably beats a fast system that fails silently. Correctness, idempotent writes, and explicit failure modes come first — speed follows.',
+  },
+  {
+    id: '02',
+    title: 'Simple architecture that scales',
+    detail: 'Stateless services, one source of truth, horizontal scaling. Complexity must earn its place: every added component is a component that can fail at 3AM.',
+  },
+  {
+    id: '03',
+    title: 'Production is the only real benchmark',
+    detail: 'Capacity is proven with load tests before traffic arrives, and behavior is measured with metrics, logs, and alerts — not assumed from benchmarks.',
+  },
+  {
+    id: '04',
+    title: 'Own the full lifecycle',
+    detail: 'From schema design to deployment to incident response. A system is not done when it ships — it is done when it can be operated calmly.',
+  },
+];
+---
+
+<section class="section-shell principles" id="principles" aria-labelledby="principles-title">
+  <div class="principles-head">
+    <div>
+      <p class="eyebrow">06 / Engineering principles</p>
+      <h2 class="section-title" id="principles-title">How I build.</h2>
+    </div>
+    <p class="section-copy">Not motivational quotes — operating rules derived from running production systems under real load.</p>
+  </div>
+  <div class="principle-list">
+    {principles.map((principle) => (
+      <article>
+        <span class="principle-id">{principle.id}</span>
+        <h3>{principle.title}</h3>
+        <p>{principle.detail}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .principles-head { display: grid; grid-template-columns: 1.1fr .9fr; gap: 5vw; align-items: end; }
+  .principles-head .section-copy { justify-self: end; }
+  .principle-list { margin-top: clamp(3.5rem, 7vw, 6rem); border-top: 1px solid var(--line-strong); }
+  article { display: grid; grid-template-columns: 6rem 1fr 1.2fr; gap: clamp(1rem, 3vw, 3rem); align-items: baseline; padding: clamp(1.8rem, 3.5vw, 2.8rem) 0; border-bottom: 1px solid var(--line); }
+  .principle-id { color: #00ff88; font: 500 .8rem/1 'JetBrains Mono', monospace; }
+  article h3 { margin: 0; font: 510 clamp(1.5rem, 2.6vw, 2.3rem)/1.1 'Geist Variable', sans-serif; letter-spacing: -.04em; }
+  article p { margin: 0; color: #a1a1aa; font-size: .92rem; line-height: 1.7; }
+  @media (max-width: 780px) {
+    .principles-head { grid-template-columns: 1fr; }
+    .principles-head .section-copy { justify-self: start; }
+    article { grid-template-columns: 3rem 1fr; }
+    article p { grid-column: 2; margin-top: .8rem; }
+  }
+</style>

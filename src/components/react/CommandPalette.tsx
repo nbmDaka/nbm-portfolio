@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUpRight, BriefcaseBusiness, Cpu, Layers3, Mail, UserRound } from 'lucide-react';
+import { ArrowUpRight, BriefcaseBusiness, Compass, Cpu, Layers3, Mail, UserRound } from 'lucide-react';
 
 type Command = {
   label: string;
@@ -13,6 +13,7 @@ const commands: Command[] = [
   { label: 'Experience timeline', hint: 'history', href: '/#experience', icon: BriefcaseBusiness },
   { label: 'Production systems', hint: 'ls /systems', href: '/#projects', icon: Layers3 },
   { label: 'Architecture lab', hint: 'inspect --graph', href: '/#lab', icon: Cpu },
+  { label: 'Engineering principles', hint: 'principles', href: '/#principles', icon: Compass },
   { label: 'Technology stack', hint: 'cat stack.yml', href: '/stack', icon: Cpu },
   { label: 'Open connection channel', hint: 'connect', href: '/#contact', icon: Mail },
 ];

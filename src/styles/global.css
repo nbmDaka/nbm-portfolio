@@ -92,20 +92,20 @@ button:focus-visible {
 }
 
 .section-title {
-  max-width: 900px;
+  max-width: 940px;
   margin: 0;
   font-family: "Geist Variable", system-ui, sans-serif;
-  font-size: clamp(2.25rem, 5vw, 5rem);
+  font-size: clamp(2.6rem, 5.4vw, 5.5rem);
   font-weight: 510;
   letter-spacing: -0.055em;
-  line-height: 0.96;
+  line-height: 0.98;
 }
 
 .section-copy {
-  max-width: 620px;
+  max-width: 640px;
   margin: 1.5rem 0 0;
   color: #a1a1aa;
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
   line-height: 1.75;
 }
 
@@ -156,8 +156,8 @@ button:focus-visible {
 
 .prose-engineering {
   color: #c8c8cd;
-  font-size: 1.05rem;
-  line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.85;
 }
 
 .prose-engineering h2 {

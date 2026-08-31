@@ -1,20 +1,61 @@
 ---
 const logs = [
-  { date: '2025-08-14', time: '03:47:22', event: 'Root-caused expired TLS certificate on nginx ingress; restored API traffic in ~40 min; added cert-expiry alerting', scope: 'linux / nginx / certbot', status: 'FIXED' },
-  { date: '2025-05-20', time: '16:08:04', event: 'Deployed RAG retrieval pipeline; NDCG@10 +0.18 over keyword baseline on a 400-query eval set', scope: 'embeddings / vector db / reranker', status: 'DEPLOYED' },
-  { date: '2024-11-06', time: '14:22:38', event: 'Moved assessment event export to Kafka consumers; request path no longer blocks on analytics', scope: 'kafka / consumers / backfill', status: 'DEPLOYED' },
-  { date: '2024-04-11', time: '09:32:51', event: 'Load-tested at 2× peak before exam window; resized PG pools; held 45K sessions at p99 240ms', scope: 'k6 / spring / postgres', status: 'STABLE' },
-  { date: '2024-02-03', time: '12:15:09', event: 'Instrumented services with Prometheus and Grafana; alerts on error rate, pool saturation, p99', scope: 'prometheus / grafana / alerts', status: 'OBSERVED' },
+  {
+    date: '2025-08-14',
+    type: 'INCIDENT',
+    event: 'Production infrastructure issue on a Linux / nginx stack',
+    resolution: 'Diagnosed root cause, restored service, hardened the affected layer',
+    lesson: 'Reliability is a response process, not luck',
+    status: 'FIXED',
+  },
+  {
+    date: '2025-05-20',
+    type: 'IMPLEMENTATION',
+    event: 'Built RAG retrieval pipeline for semantic job matching',
+    resolution: 'Embedding generation → vector search → AI re-ranking, deployed to production',
+    lesson: 'Retrieval quality is decided by data shaping before model choice',
+    status: 'DEPLOYED',
+  },
+  {
+    date: '2025',
+    type: 'DECISION',
+    event: 'Chose asynchronous job processing for AI media generation',
+    resolution: 'Durable job state in PostgreSQL instead of long-lived synchronous requests',
+    lesson: 'Durable state beats optimistic connections',
+    status: 'SHIPPED',
+  },
+  {
+    date: '2024',
+    type: 'IMPLEMENTATION',
+    event: 'Scaled national testing services for exam-window peaks',
+    resolution: 'Load-tested before windows; capacity added horizontally [VERIFY METRIC: peak load held]',
+    lesson: 'Capacity is proven by rehearsal, not assumption',
+    status: 'STABLE',
+  },
+  {
+    date: '2024',
+    type: 'DECISION',
+    event: 'Kept exam writes retry-safe under double-clicks and network retries',
+    resolution: 'Retry-safe answer persistence on the write path [VERIFY DETAILS: mechanism]',
+    lesson: 'Correctness under chaos is an API property',
+    status: 'DEPLOYED',
+  },
 ];
 ---
 
 <section class="section-shell logs" id="logs" aria-labelledby="logs-title">
-  <div class="logs-head"><div><p class="eyebrow">05 / Engineering logs</p><h2 class="section-title" id="logs-title">Operational record.</h2></div><div class="log-status"><i></i><span>5 ENTRIES INDEXED</span></div></div>
+  <div class="logs-head"><div><p class="eyebrow">05 / Engineering logs</p><h2 class="section-title" id="logs-title">Operational record.</h2></div><div class="log-status"><i></i><span>{logs.length} ENTRIES INDEXED</span></div></div>
   <div class="log-window">
     <header><span>~/engineering/logs</span><code>tail -f production.log</code></header>
     <div class="log-rows">
       {logs.map((log, index) => (
-        <article><span class="number">{String(index + 1).padStart(2,'0')}</span><time>{log.date}<i>{log.time}</i></time><p>{log.event}</p><code>{log.scope}</code><b>{log.status}</b></article>
+        <article>
+          <span class="number">{String(index + 1).padStart(2,'0')}</span>
+          <div class="log-when"><time>{log.date}</time><em class:list={[log.type.toLowerCase()]}>{log.type}</em></div>
+          <div class="log-what"><p>{log.event}</p><span>{log.resolution}</span></div>
+          <code>→ {log.lesson}</code>
+          <b>{log.status}</b>
+        </article>
       ))}
     </div>
   </div>
@@ -27,14 +68,19 @@ const logs = [
   .log-window { margin-top: 4rem; border: 1px solid var(--line); border-radius: .45rem; background: rgba(255,255,255,.018); }
   .log-window > header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); color: #71717a; font: 400 .6rem/1 'JetBrains Mono',monospace; }
   .log-window > header code { color: #3f3f46; font: inherit; }
-  .log-rows article { display: grid; grid-template-columns: 3rem 9rem 1.4fr 1fr auto; align-items: center; gap: 1rem; min-height: 5.5rem; padding: 0 1.2rem; border-bottom: 1px solid var(--line); }
+  .log-rows article { display: grid; grid-template-columns: 2.5rem 8.5rem 1.5fr 1fr auto; align-items: center; gap: 1.25rem; min-height: 6rem; padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); }
   .log-rows article:last-child { border-bottom: 0; }
   .number { color: #3f3f46; font: 400 .58rem/1 'JetBrains Mono',monospace; }
-  time { display: flex; flex-direction: column; gap: .35rem; color: #a1a1aa; font: 400 .63rem/1 'JetBrains Mono',monospace; }
-  time i { color: #3f3f46; font-style: normal; }
-  article p { margin: 0; color: #d4d4d8; font-size: .8rem; line-height: 1.4; }
-  article code { color: #52525b; font: 400 .56rem/1.3 'JetBrains Mono',monospace; }
-  article b { min-width: 4.8rem; border: 1px solid rgba(0,255,136,.17); border-radius: 99px; padding: .42rem .55rem; color: #00ff88; font: 500 .5rem/1 'JetBrains Mono',monospace; text-align: center; }
-  @media(max-width:800px){.log-rows article{grid-template-columns:2rem 8rem 1fr auto}.log-rows article code{display:none}}
-  @media(max-width:580px){.logs-head{display:block}.log-status{margin-top:1.5rem}.log-window>header code{display:none}.log-rows article{grid-template-columns:2rem 1fr auto;gap:.6rem;padding-block:1rem}.log-rows time{grid-column:2}.log-rows p{grid-column:2;grid-row:2}.log-rows article b{grid-column:3;grid-row:1/3}.number{grid-row:1/3}}
+  .log-when { display: flex; flex-direction: column; gap: .5rem; align-items: flex-start; }
+  time { color: #a1a1aa; font: 400 .63rem/1 'JetBrains Mono',monospace; }
+  .log-when em { border: 1px solid var(--line-strong); border-radius: 99px; padding: .32rem .5rem; font: 500 .5rem/1 'JetBrains Mono',monospace; font-style: normal; letter-spacing: .08em; color: #a1a1aa; }
+  .log-when em.incident { border-color: rgba(248,113,113,.3); color: #fca5a5; }
+  .log-when em.implementation { border-color: rgba(0,255,136,.2); color: #00ff88; }
+  .log-when em.decision { border-color: rgba(99,102,241,.35); color: #818cf8; }
+  .log-what p { margin: 0; color: #e4e4e7; font-size: .85rem; line-height: 1.45; }
+  .log-what span { display: block; margin-top: .4rem; color: #71717a; font-size: .72rem; line-height: 1.5; }
+  article > code { color: #52525b; font: 400 .62rem/1.5 'JetBrains Mono',monospace; }
+  article > b { min-width: 4.8rem; border: 1px solid rgba(0,255,136,.17); border-radius: 99px; padding: .42rem .55rem; color: #00ff88; font: 500 .5rem/1 'JetBrains Mono',monospace; text-align: center; }
+  @media(max-width:900px){.log-rows article{grid-template-columns:2.5rem 8.5rem 1fr auto}.log-rows article>code{display:none}}
+  @media(max-width:580px){.logs-head{display:block}.log-status{margin-top:1.5rem}.log-window>header code{display:none}.log-rows article{grid-template-columns:2rem 1fr auto;gap:.6rem}.log-when{grid-column:2}.log-what{grid-column:2;grid-row:2}.log-rows article b{grid-column:3;grid-row:1/3}.number{grid-row:1/3}}
 </style>

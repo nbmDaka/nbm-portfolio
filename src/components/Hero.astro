@@ -9,10 +9,12 @@ import SystemNetwork from './react/SystemNetwork';
   <div class="hero-inner page-shell">
     <div class="hero-copy">
       <div class="system-status"><i></i><span>SYSTEM ONLINE</span><b>UTC+5 / ASTANA</b></div>
-      <h1 id="hero-title">Backend engineer.<br /><span>High-concurrency systems &amp; AI infrastructure.</span></h1>
-      <p>I design and operate production backends: national-scale testing at 45K concurrent sessions, semantic job search, and asynchronous AI generation.</p>
+      <p class="hero-name">Nurdaulet Beketov</p>
+      <h1 id="hero-title">Backend engineer building <span>high-scale systems &amp; AI products.</span></h1>
+      <p class="hero-stack">Go<b>·</b>Java<b>·</b>Distributed Systems<b>·</b>AI Infrastructure</p>
+      <p class="hero-sub">Production backends for national-scale testing, semantic job search, and AI media generation.</p>
       <div class="hero-actions">
-        <a class="primary-action" href="#projects">Inspect systems <span>↘</span></a>
+        <a class="primary-action" href="#impact">See impact <span>↘</span></a>
         <button class="hairline-button" type="button" data-open-command>Open console <kbd>⌘K</kbd></button>
       </div>
     </div>
@@ -35,9 +37,13 @@ import SystemNetwork from './react/SystemNetwork';
   .system-status { display: flex; align-items: center; gap: .7rem; margin-bottom: 1.6rem; color: #00ff88; font: 500 .6rem/1 'JetBrains Mono', monospace; letter-spacing: .11em; }
   .system-status i { width: .42rem; height: .42rem; border-radius: 50%; background: #00ff88; box-shadow: 0 0 14px rgba(0,255,136,.6); }
   .system-status b { margin-left: .4rem; color: #3f3f46; font-weight: 400; }
-  h1 { margin: 0; font-family: 'Geist Variable', sans-serif; font-size: clamp(3.2rem, 6vw, 6.2rem); font-weight: 520; letter-spacing: -.072em; line-height: .87; }
+  h1 { max-width: 20ch; margin: 0; font-family: 'Geist Variable', sans-serif; font-size: clamp(3.4rem, 7.2vw, 7.5rem); font-weight: 520; letter-spacing: -.055em; line-height: .95; }
   h1 span { color: #71717a; }
-  .hero-copy > p { max-width: 590px; margin: 2rem 0 0; color: #a1a1aa; font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.7; }
+  .hero-name { display: flex; align-items: center; gap: .7rem; margin: 0 0 1.5rem; color: #fff; font: 500 .85rem/1 'JetBrains Mono', monospace; letter-spacing: .22em; text-transform: uppercase; }
+  .hero-name::before { content: ""; width: .55rem; height: .55rem; background: #00ff88; }
+  .hero-stack { margin: 1.7rem 0 0; color: #d4d4d8; font: 500 .8rem/1.6 'JetBrains Mono', monospace; letter-spacing: .04em; }
+  .hero-stack b { margin-inline: .65rem; color: #00ff88; font-weight: 400; }
+  .hero-sub { max-width: 590px; margin: 1.1rem 0 0; color: #a1a1aa; font-size: clamp(1rem, 1.5vw, 1.18rem); line-height: 1.7; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
   .primary-action { display: inline-flex; min-height: 2.8rem; align-items: center; gap: 1.2rem; border-radius: .35rem; background: #fff; padding: .75rem 1rem; color: #050505; font: 600 .72rem/1 'JetBrains Mono', monospace; text-decoration: none; transition: background 180ms ease, transform 180ms ease; }
   .primary-action:hover { background: #00ff88; transform: translateY(-1px); }
@@ -56,7 +62,7 @@ import SystemNetwork from './react/SystemNetwork';
   }
   @media (max-width: 520px) {
     .hero-inner { padding-top: 4.5rem; }
-    h1 { font-size: clamp(3rem, 15vw, 4.6rem); }
+    h1 { font-size: clamp(3rem, 13vw, 4.6rem); max-width: none; }
     .visual { top: 21rem; right: -15rem; opacity: .42; }
     .console { margin-top: 5rem; }
     .system-status b { display: none; }

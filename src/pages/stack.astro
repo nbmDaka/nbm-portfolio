@@ -7,12 +7,12 @@ const categories = [
     name: 'Backend Runtime',
     note: 'Services that hold under load.',
     tech: [
-      { name: 'Go', context: 'Low-latency retrieval and API serving' },
-      { name: 'Java', context: 'Enterprise systems at national scale' },
-      { name: 'Spring Boot', context: 'Production microservices, shipped fast' },
-      { name: 'NestJS', context: 'Structured Node services with typed boundaries' },
-      { name: 'Kafka', context: 'Event backbone for analytics and async workflows' },
-      { name: 'gRPC', context: 'Typed internal service contracts, low overhead' },
+      { name: 'Go', context: 'High-performance backend services and concurrent workloads where latency budget matters' },
+      { name: 'Java', context: 'Large enterprise systems that must stay maintainable for years' },
+      { name: 'Spring Boot', context: 'Production microservices with a mature operational ecosystem' },
+      { name: 'NestJS', context: 'Structured Node.js services with typed boundaries' },
+      { name: 'Kafka', context: 'Event-driven architecture — async, decoupled communication between services' },
+      { name: 'gRPC', context: 'Typed, low-overhead contracts between internal services' },
     ],
   },
   {
@@ -20,8 +20,8 @@ const categories = [
     name: 'Infrastructure',
     note: 'Boring where it should be, sharp where it matters.',
     tech: [
-      { name: 'Docker', context: 'Reproducible builds and deployments' },
-      { name: 'Linux', context: 'Production servers, hardening, incident response' },
+      { name: 'Docker', context: 'Reproducible builds and predictable deployments' },
+      { name: 'Linux', context: 'Running and hardening production servers; incident response' },
       { name: 'Nginx', context: 'Edge routing, TLS termination, load distribution' },
     ],
   },
@@ -30,9 +30,9 @@ const categories = [
     name: 'Data Systems',
     note: 'The source of truth stays truthful.',
     tech: [
-      { name: 'PostgreSQL', context: 'Primary store — query optimization, high-load paths' },
-      { name: 'MySQL', context: 'Service-owned schemas and legacy integration' },
-      { name: 'Vector DB', context: 'Embedding storage and semantic retrieval' },
+      { name: 'PostgreSQL', context: 'Reliable relational storage; query optimization on high-load paths' },
+      { name: 'MySQL', context: 'Service-owned schemas and integration with existing systems' },
+      { name: 'Vector DB', context: 'Embedding storage and fast semantic similarity search' },
     ],
   },
   {
@@ -41,9 +41,9 @@ const categories = [
     note: 'Intelligence as infrastructure, not decoration.',
     ai: true,
     tech: [
-      { name: 'RAG', context: 'Retrieval pipelines with measurable relevance' },
-      { name: 'Embeddings', context: 'Semantic representations of unstructured data' },
-      { name: 'AI APIs', context: 'Model integration under cost and latency budgets' },
+      { name: 'RAG', context: 'Grounding model output in retrieved, verifiable data' },
+      { name: 'Embeddings', context: 'Turning unstructured text into searchable semantic representations' },
+      { name: 'AI APIs', context: 'Model integration with explicit cost and latency budgets' },
     ],
   },
 ];
@@ -79,7 +79,7 @@ const principles = [
               {category.tech.map((item) => (
                 <li>
                   <strong>{item.name}</strong>
-                  <span>{item.context}</span>
+                  <span><b>Used for</b>{item.context}</span>
                 </li>
               ))}
             </ul>
@@ -118,7 +118,8 @@ const principles = [
   .category li:last-child { border-bottom: 0; }
   .category li strong { color: #e4e4e7; font: 500 .78rem/1.3 'JetBrains Mono', monospace; }
   .category.ai li strong { color: #c7cbfb; }
-  .category li span { color: #52525b; font-size: .7rem; line-height: 1.5; }
+  .category li span { color: #71717a; font-size: .74rem; line-height: 1.55; }
+  .category li span b { display: block; margin-bottom: .3rem; color: #3f3f46; font: 500 .5rem/1 'JetBrains Mono', monospace; letter-spacing: .1em; text-transform: uppercase; }
 
   .stack-principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: clamp(4rem, 7vw, 6rem); padding-top: 1.4rem; border-top: 1px solid var(--line); }
   .stack-principles span { grid-column: 1 / -1; color: #52525b; font: 500 .56rem/1 'JetBrains Mono', monospace; letter-spacing: .12em; }

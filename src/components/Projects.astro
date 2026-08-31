@@ -1,15 +1,15 @@
 ---
 const projects = [
-  { num: 'SYS_001', title: 'National Testing Platform', subtitle: 'High-concurrency public infrastructure', href: '/projects/national-testing-platform', stat: '3.5M+', unit: 'users · 45K peak concurrent', stack: ['Java', 'Spring Boot', 'PostgreSQL', 'Kafka', 'React'], nodes: ['EDGE','API','CORE','DATA'], accent: 'green' },
-  { num: 'SYS_002', title: 'AI Job Search Platform', subtitle: 'Semantic retrieval and recommendations', href: '/projects/ai-job-search', stat: 'RAG', unit: 'NDCG@10 +0.18 vs keyword', stack: ['Go', 'gRPC', 'Vector DB', 'AI APIs'], nodes: ['QUERY','EMBED','VECTOR','AI'], accent: 'indigo' },
-  { num: 'SYS_003', title: 'AI Media Generation', subtitle: 'Asynchronous generation workflows', href: '/projects/ai-media-generation', stat: 'ASYNC', unit: 'zero lost jobs · durable queue', stack: ['Next.js', 'PostgreSQL', 'AI APIs'], nodes: ['UI','JOBS','MODEL','STORE'], accent: 'white' },
+  { num: 'SYS_001', title: 'National Testing Platform', subtitle: 'Kept national exams online for millions of candidates', href: '/projects/national-testing-platform', stat: '3.5M+', unit: 'users · 40K–50K peak concurrent', stack: ['Java', 'Spring Boot', 'PostgreSQL', 'React'], nodes: ['EDGE','API','CORE','DATA'], accent: 'green' },
+  { num: 'SYS_002', title: 'AI Job Search Platform', subtitle: 'Job matching that understands intent, not keywords', href: '/projects/ai-job-search', stat: 'RAG', unit: 'semantic matching in production', stack: ['RAG', 'Vector DB', 'Embeddings', 'AI APIs'], nodes: ['QUERY','EMBED','VECTOR','AI'], accent: 'indigo' },
+  { num: 'SYS_003', title: 'AI Media Generation', subtitle: 'Slow model calls turned into predictable workflows', href: '/projects/ai-media-generation', stat: 'ASYNC', unit: 'durable, queue-based generation', stack: ['Next.js', 'PostgreSQL', 'AI APIs'], nodes: ['UI','JOBS','MODEL','STORE'], accent: 'white' },
 ];
 ---
 
 <section class="section-shell projects" id="projects" aria-labelledby="projects-title">
   <div class="projects-head">
     <div><p class="eyebrow">03 / Production systems</p><h2 class="section-title" id="projects-title">Selected deployments.</h2></div>
-    <p class="section-copy">Three systems, viewed through constraints, architecture, and measurable operational outcomes.</p>
+    <p class="section-copy">Three systems, viewed through the problem that existed, the engineering that solved it, and why it mattered.</p>
   </div>
   <div class="project-list">
     {projects.map((project) => (
