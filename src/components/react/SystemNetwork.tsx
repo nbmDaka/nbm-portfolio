@@ -91,7 +91,7 @@ export default function SystemNetwork({ mode = 'hero' }: { mode?: 'hero' | 'lab'
           <dl>
             <div><dt>Purpose</dt><dd>{current.purpose}</dd></div>
             <div><dt>Role</dt><dd>{current.role}</dd></div>
-            <div><dt>Why this tech</dt><dd>{current.why}</dd></div>
+            <div><dt>Why</dt><dd>{current.why}</dd></div>
           </dl>
         </aside>
       )}

@@ -33,6 +33,13 @@ Stateless **Spring Boot** services sit behind an API gateway, scaled horizontall
 
 Answer persistence is write-optimized: submissions flow through retry-safe endpoints, so a retry under pressure is safe by construction rather than by luck.
 
+## Ownership
+
+- **Implemented** backend components responsible for answer persistence and exam session handling
+- **Owned** PostgreSQL query optimization for the high-load read paths
+- **Ran** load testing before exam windows and acted on the findings
+- **Contributed to** core platform services as part of the engineering team
+
 ## Engineering decisions
 
 ### Idempotent submission pipeline

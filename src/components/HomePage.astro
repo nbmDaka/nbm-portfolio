@@ -9,6 +9,7 @@ import ProjectEvidence from './ProjectEvidence.astro';
 import ArchitectureLab from './ArchitectureLab.astro';
 import EngineeringLogs from './EngineeringLogs.astro';
 import EngineeringPrinciples from './EngineeringPrinciples.astro';
+import EngineeringNotes from './EngineeringNotes.astro';
 import Contact from './Contact.astro';
 import { useTranslations } from '../i18n/ui';
 
@@ -24,7 +25,7 @@ const t = useTranslations(Astro.currentLocale);
       <div><p class="eyebrow">{t.experience.eyebrow}</p><h2 class="section-title" id="experience-title">{t.experience.title}</h2></div>
       <p class="section-copy">{t.experience.copy}</p>
     </div>
-    <ExperienceTimeline client:visible entries={t.experience.entries} />
+    <ExperienceTimeline client:visible entries={t.experience.entries} labels={{ owned: t.experience.ownedLabel, contributed: t.experience.contributedLabel }} />
     <div class="education">
       <span class="mono-label">{t.experience.educationLabel}</span>
       <div class="education-main">
@@ -39,6 +40,7 @@ const t = useTranslations(Astro.currentLocale);
   <ArchitectureLab />
   <EngineeringLogs />
   <EngineeringPrinciples />
+  <EngineeringNotes />
   <Contact />
 </BaseLayout>
 

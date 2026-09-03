@@ -19,6 +19,10 @@ const links = [
     <div class="prompt"><span>›</span> {t.prompt}<span class="cursor"></span></div>
     <h2 id="contact-title">{t.titleA}<br />{t.titleB}</h2>
     <p>{t.sub}</p>
+    <div class="status-block">
+      <span class="status-label"><i></i>{t.statusLabel}</span>
+      <p>{t.statusText}</p>
+    </div>
     <div class="contact-links">
       {links.map((link) => <a href={link.href} target={link.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer" download={link.download ? '' : undefined}><span>{link.label}</span><strong>{link.value}</strong><b>{link.download ? '↓' : '↗'}</b></a>)}
     </div>
@@ -34,6 +38,10 @@ const links = [
   .cursor{display:inline-block;width:.5rem;height:.85rem;margin-left:.4rem;translate:0 .15rem;background:#00ff88;animation:blink 1s steps(1) infinite}
   h2 { margin: 1.5rem 0 0; font: 510 clamp(3.3rem,8vw,8.5rem)/.88 'Geist Variable',sans-serif; letter-spacing: -.07em; }
   .contact-inner>p:not(.eyebrow){margin:2rem 0 0;color:#a1a1aa;font-size:clamp(1rem,1.5vw,1.15rem)}
+  .status-block { display: flex; align-items: center; gap: 1.25rem; width: max-content; max-width: 100%; margin-top: 2.5rem; border: 1px solid rgba(0,255,136,.2); border-radius: .4rem; background: rgba(0,255,136,.04); padding: .9rem 1.1rem; }
+  .status-label { display: flex; align-items: center; gap: .5rem; color: #00ff88; font: 500 .56rem/1 'JetBrains Mono',monospace; letter-spacing: .1em; white-space: nowrap; }
+  .status-label i { width: .4rem; height: .4rem; border-radius: 50%; background: #00ff88; box-shadow: 0 0 10px rgba(0,255,136,.6); }
+  .status-block p { margin: 0; color: #a1a1aa; font: 400 .72rem/1.5 'JetBrains Mono',monospace; }
   .contact-links { margin-top: 4rem; border-top: 1px solid var(--line-strong); }
   .contact-links a { display: grid; grid-template-columns: .5fr 1.5fr auto; gap: 1rem; align-items: center; min-height: 5.25rem; border-bottom: 1px solid var(--line); color: white; text-decoration: none; transition: padding 180ms ease, background 180ms ease; }
   .contact-links a:hover { padding-inline: 1rem; background: rgba(255,255,255,.025); }

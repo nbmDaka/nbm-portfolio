@@ -32,6 +32,12 @@ The **Next.js** frontend never talks to a model directly. Generation requests be
 
 Because job state lives in the database rather than in process memory, any worker can die at any point and the system recovers by reading state — not by reconstructing it.
 
+## Ownership
+
+- **Implemented** the job state machine and queue workers end to end
+- **Built** the AI provider integrations with per-failure-class handling
+- **Owned** retry, reconciliation, and cost-control logic
+
 ## Engineering decisions
 
 ### Job state machine as the core abstraction
